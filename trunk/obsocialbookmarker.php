@@ -74,7 +74,7 @@ function obsocialbookmarkerLinks()
 		,'tailrank' => array(
 			'title' => 'Add to Tailrank!'
 			, 'link' => 'http://tailrank.com/share/?link_href='.$link.'&title='.$title
-			, 'img' => '"http://www.tailrank.com/favicon.ico" width="16" height="16" alt="[Tailrank]"'
+			, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/tailrank.png" width="16" height="16" alt="[Tailrank]"'
 			, 'js' =>  ''
 		)
 
@@ -108,7 +108,7 @@ function obsocialbookmarkerLinks()
 	$bookmarker = array();
 	foreach ($social_sites as $key => $data) {
 		$bookmarker[$key] = '<a href="'.$data['link'].'" target="_blank"'.' title="'.$data['title'].'"'
-							.' onclick="'.$data['js'].'"'.' <img src='.$data['img'].'/></a>';
+							.' onclick="'.$data['js'].'"'.'> <img src='.$data['img'].'/></a>';
 	}
 
 	return '<span class="obsocialbookmarker">'
