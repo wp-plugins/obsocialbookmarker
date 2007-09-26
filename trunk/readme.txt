@@ -1,4 +1,4 @@
-=== oraclebrains ===
+=== obsocialbookmarker ===
 Version: 3.0
 Contributors: Rajender Singh
 Requires at least: 2.2
