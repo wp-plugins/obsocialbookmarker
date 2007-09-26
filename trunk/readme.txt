@@ -1,26 +1,56 @@
-=== Plugin Name ===
-Oracle Brains Social Book Marker
-
-Contributors: oraclebrains
+=== oraclebrains ===
+Version: 3.0
+Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.2.3
 Stable tag: obsocialbookmarker
-Tags:  obsocialbookmarker, bookmark, social, network, digg, del.icio.us, ma.gnolia, technorati, reddit, tailrank, furl, blinklist, blogmarks, newsvine, netscape, social, socialize, stumbleupon, slashdot, digg, reddit, del.icio.us, delicious, facebook, links, social, bookmarking
+Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita
 
 == Description ==
 
-Oracle Brains Social Book Marker adds user-submission links at the bottom of each post for various social bookmarking sites.
+Oracle Brains Social Book Marker adds user-submission links at the bottom of each post for various social bookmarking sites which allow your visitors to easily submit them in a number of social bookmarking sites.
+
+Supporting sites:
+* Del.icio.us
+* Reddit
+* Slashdot it
+* Digg
+* Facebook
+* Technorati
+* Google
+* Stumble
+* Window Live
+* Tailrank
+* Furl
+* Netscape
+* Yahoo
+* Blinklist
+* Feed Me Links
+* Co.mments
+* Bloglines
+* Bookmark.it
+* Ask
+* Diggita
+
+
+New Features in version 3.0
+---------------------------
+
+Many new sites added and also added an option page under admin, where administrator can choose which bookmark he wants to make enable.
 
 == Installation ==
 
 1. Upload 'obsocialbookmarker.php' to the '/wp-content/plugins/' directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Go to "Options"->"obsocialbookmarker" and enabled the bookmark you want to enable
 
-== Bugs Rectify ==
+== Upgradation ==
+1. Simple follow step given as Installation and overwrite the existing file.
 
-Rectified as on 26/09/2007
-Bookmark not working in IE7
-Tailrank Icon not showing in IE7 from original site so changed to http://www.oraclebrains.com/download/obsocialbookmarker/images/tailrank.png.
+Thats it!
 
+== Frequently Asked Questions ==
 
+*Why images are not within plugin?
 
+I deliberately didn't added images to make installation easy. Bookmark icon are fetch either from original site or plugin parent site.
