@@ -14,5 +14,13 @@ Oracle Brains Social Book Marker adds user-submission links at the bottom of eac
 == Installation ==
 
 1. Upload 'obsocialbookmarker.php' to the '/wp-content/plugins/' directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
+1. Activate the plugin through the 'Plugins' menu in WordPress
+
+== Bugs Rectify ==
+
+Rectified as on 26/09/2007
+Bookmark not working in IE7
+Tailrank Icon not showing in IE7 from original site so changed to http://www.oraclebrains.com/download/obsocialbookmarker/images/tailrank.png.
+
+
 
