@@ -273,8 +273,7 @@ function obsocialbookmarkerLinks()
 	unset($bookmarker);
 	foreach ($social_sites as $key => $data) {
 		if ($data['visible'] == '1'){
-			$bookmarker[$key] = '<a href="'.$data['link'].'" target="_blank"'.' title="'.$data['title'].'"'
-								.' onclick="'.$data['js'].'"'.'> <img src='.$data['img'].'/></a>';
+			$bookmarker[$key] = '<a href="'.$data['link'].'" target="_blank"'.' title="'.$data['title'].'"> <img src='.$data['img'].'/></a>';
 		}
 	}
 
