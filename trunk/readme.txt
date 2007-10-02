@@ -54,3 +54,10 @@ Thats it!
 *Why images are not within plugin?
 
 I deliberately didn't added images to make installation easy. Bookmark icon are fetch either from original site or plugin parent site.
+
+== Bugs Rectify ==
+
+Rectified as on 02/10/2007
+line 63, column 0: content:encoded should not contain onclick attribute (32 occurrences) [help]
+
+
