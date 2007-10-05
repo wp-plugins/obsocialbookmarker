@@ -55,6 +55,12 @@ function print_obsocialbookmarker_options_form() {
 	$bookmark_list['obsocialbookmarkerbookmark'] = 'Bookmark.it!';
 	$bookmark_list['obsocialbookmarkerask'] = 'Ask!';
 	$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!!';
+	$bookmark_list['obsocialbookmarkermisterwong'] = 'Mister Wong!!';
+	$bookmark_list['obsocialbookmarkermisterwongcn'] = 'Mister Wong China!!';
+	$bookmark_list['obsocialbookmarkermisterwongde'] = 'Mister Wong Germany!!';
+	$bookmark_list['obsocialbookmarkermisterwongfr'] = 'Mister Wong France!!';
+	$bookmark_list['obsocialbookmarkermisterwongru'] = 'Mister Wong Russia!!';
+	$bookmark_list['obsocialbookmarkermisterwonges'] = 'Mister Wong Spain!!';
 
 	$ok = false;	
 
@@ -264,8 +270,50 @@ function obsocialbookmarkerLinks()
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerdiggita')
 		)
+		,'misterwong' => array(
+			'title' => 'Mister Wong!'
+			, 'link' => 'http://www.mister-wong.com/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
+			, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/misterwong.png" width="16" height="16" alt="Mister Wong"'
+			, 'js' =>  ''
+			, 'visible' => get_option('obsocialbookmarkermisterwong')
+		)
+		,'misterwongcn' => array(
+			'title' => 'Mister Wong China!'
+			, 'link' => 'http://www.mister-wong.cn/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
+			, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/misterwong.png" width="16" height="16" alt="Mister Wong China"'
+			, 'js' =>  ''
+			, 'visible' => get_option('obsocialbookmarkermisterwongcn')
+		)
+		,'misterwongde' => array(
+			'title' => 'Mister Wong Germany!'
+			, 'link' => 'http://www.mister-wong.de/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
+			, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/misterwong.png" width="16" height="16" alt="Mister Wong Germany"'
+			, 'js' =>  ''
+			, 'visible' => get_option('obsocialbookmarkermisterwongde')
+		)
+		,'misterwongfr' => array(
+			'title' => 'Mister Wong France!'
+			, 'link' => 'http://www.mister-wong.fr/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
+			, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/misterwong.png" width="16" height="16" alt="Mister Wong France"'
+			, 'js' =>  ''
+			, 'visible' => get_option('obsocialbookmarkermisterwongfr')
+		)
+		,'misterwongru' => array(
+			'title' => 'Mister Wong Russia!'
+			, 'link' => 'http://www.mister-wong.ru/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
+			, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/misterwong.png" width="16" height="16" alt="Mister Wong Russia"'
+			, 'js' =>  ''
+			, 'visible' => get_option('obsocialbookmarkermisterwongru')
+		)
+		,'misterwonges' => array(
+			'title' => 'Mister Wong Spain!'
+			, 'link' => 'http://www.mister-wong.es/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
+			, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/misterwong.png" width="16" height="16" alt="Mister Wong Spain"'
+			, 'js' =>  ''
+			, 'visible' => get_option('obsocialbookmarkermisterwonges')
+		)
 
-	);
+);
 
 	
 
@@ -305,6 +353,13 @@ function set_obsocialbookmarker_options(){
 	$bookmark_list['obsocialbookmarkerbookmark'] = 'Bookmark.it!';
 	$bookmark_list['obsocialbookmarkerask'] = 'Ask!';
 	$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!!';
+	$bookmark_list['obsocialbookmarkermisterwong'] = 'Mister Wong!!';
+	$bookmark_list['obsocialbookmarkermisterwongcn'] = 'Mister Wong China!!';
+	$bookmark_list['obsocialbookmarkermisterwongde'] = 'Mister Wong Germany!!';
+	$bookmark_list['obsocialbookmarkermisterwongfr'] = 'Mister Wong France!!';
+	$bookmark_list['obsocialbookmarkermisterwongru'] = 'Mister Wong Russia!!';
+	$bookmark_list['obsocialbookmarkermisterwonges'] = 'Mister Wong Spain!!';
+
 	foreach ($bookmark_list as $key => $data) {
 		add_option($key,'0',$key);
 	}
@@ -333,6 +388,12 @@ function unset_obsocialbookmarker_options(){
 	$bookmark_list['obsocialbookmarkerbookmark'] = 'Bookmark.it!';
 	$bookmark_list['obsocialbookmarkerask'] = 'Ask!';
 	$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!!';
+	$bookmark_list['obsocialbookmarkermisterwong'] = 'Mister Wong!!';
+	$bookmark_list['obsocialbookmarkermisterwongcn'] = 'Mister Wong China!!';
+	$bookmark_list['obsocialbookmarkermisterwongde'] = 'Mister Wong Germany!!';
+	$bookmark_list['obsocialbookmarkermisterwongfr'] = 'Mister Wong France!!';
+	$bookmark_list['obsocialbookmarkermisterwongru'] = 'Mister Wong Russia!!';
+	$bookmark_list['obsocialbookmarkermisterwonges'] = 'Mister Wong Spain!!';
 	foreach ($bookmark_list as $key => $data) {
 		delete_option($key);
 	}
