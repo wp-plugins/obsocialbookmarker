@@ -1,10 +1,10 @@
 === obsocialbookmarker ===
-Version: 3.0
+Version: 3.1
 Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.2.3
 Stable tag: obsocialbookmarker
-Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita
+Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong
 
 == Description ==
 
@@ -31,12 +31,21 @@ Supporting sites:
 * Bookmark.it
 * Ask
 * Diggita
+* Mister Wong
+* Mister Wong China
+* Mister Wong Germany
+* Mister Wong France
+* Mister Wong Russia
+* Mister Wong Spain 
 
 
-New Features in version 3.0
+
+
+
+New Features in version 3.1
 ---------------------------
 
-Many new sites added and also added an option page under admin, where administrator can choose which bookmark he wants to make enable.
+Mister Wong new sites added
 
 == Installation ==
 
@@ -55,9 +64,5 @@ Thats it!
 
 I deliberately didn't added images to make installation easy. Bookmark icon are fetch either from original site or plugin parent site.
 
-== Bugs Rectify ==
-
-Rectified as on 02/10/2007
-line 63, column 0: content:encoded should not contain onclick attribute (32 occurrences) [help]
 
 
