@@ -1,10 +1,10 @@
 === obsocialbookmarker ===
-Version: 3.1
+Version: 3.2
 Contributors: Rajender Singh
 Requires at least: 2.2
-Tested up to: 2.2.3
+Tested up to: 2.3
 Stable tag: obsocialbookmarker
-Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong
+Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it.
 
 == Description ==
 
@@ -37,15 +37,34 @@ Supporting sites:
 * Mister Wong France
 * Mister Wong Russia
 * Mister Wong Spain 
+* Backflip
+* Spurl
+* Netvouz
+* Diigo
+* Dropjack
+* Segnalo
+* Stumbleupon
+* Simpy
+* Newsvine
+* Slashdot it.
 
 
 
-
-
-New Features in version 3.1
+New Features in version 3.2
 ---------------------------
 
-Mister Wong new sites added
+Following new sites added
+* Backflip
+* Spurl
+* Netvouz
+* Diigo
+* Dropjack
+* Segnalo
+* Stumbleupon
+* Simpy
+* Newsvine
+* Slashdot it.
+
 
 == Installation ==
 
