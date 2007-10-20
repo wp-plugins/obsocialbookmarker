@@ -1,5 +1,5 @@
 === obsocialbookmarker ===
-Version: 3.2
+Version: 3.3
 Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.3
@@ -46,25 +46,19 @@ Supporting sites:
 * Stumbleupon
 * Simpy
 * Newsvine
-* Slashdot it.
+* Slashdot it
+* Wink
+* LinkaGoGo
 
 
-
-New Features in version 3.2
+New Features in version 3.3
 ---------------------------
 
-Following new sites added
-* Backflip
-* Spurl
-* Netvouz
-* Diigo
-* Dropjack
-* Segnalo
-* Stumbleupon
-* Simpy
-* Newsvine
-* Slashdot it.
+Some sites due to different style sheet, may show images verically.
 
+To tackle this I added style="float:none" in HTML IMAGE TAG.
+
+Added two new bookmark.
 
 == Installation ==
 

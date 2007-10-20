@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it.
-Version: 3.2
+Version: 3.3
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -68,7 +68,9 @@ function print_obsocialbookmarker_options_form() {
 	$bookmark_list['obsocialbookmarkercomments'] = 'co.mments!';
 	$bookmark_list['obsocialbookmarkerbloglines'] = 'Bloglines!';
 	$bookmark_list['obsocialbookmarkerbookmark'] = 'Bookmark.it!';
-	$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!!';
+	$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!';
+	$bookmark_list['obsocialbookmarkerwink'] = 'Wink!';
+	$bookmark_list['obsocialbookmarkerlinkagogo'] = 'LinkaGoGo!';
 
 	$ok = false;	
 
@@ -377,14 +379,26 @@ function obsocialbookmarkerLinks()
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerdropjack')
 			)
-
+		,'wink' => array(
+				'title' => 'Wink'
+				, 'link' => 'http://wink.com/_/tag?url='.$link."&doctitle==".$title
+				, 'img' => '"http://wink.com/favicon.ico" width="16" height="16" alt="Dropjack"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerwink')
+			)
+		,'linkagogo' => array(
+				'title' => 'LinkaGoGo'
+				, 'link' => 'http://www.linkagogo.com/go/AddNoPopup?url='.$link."&title===".$title
+				, 'img' => '"http://www.linkagogo.com/favicon.ico" width="16" height="16" alt="Dropjack"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerlinkagogo')
+			)
 );
-
 	$bookmarker = array();
 	unset($bookmarker);
 	foreach ($social_sites as $key => $data) {
 		if ($data['visible'] == '1'){
-			$bookmarker[$key] = '<a href="'.$data['link'].'" target="_blank"'.' title="'.$data['title'].'"> <img src='.$data['img'].'/></a>';
+			$bookmarker[$key] = '<a href="'.$data['link'].'" target="_blank"'.' title="'.$data['title'].'"> <img src='.$data['img'].' style="float:none"/></a>';
 		}
 	}
 
@@ -430,7 +444,8 @@ function set_obsocialbookmarker_options(){
 	$bookmark_list['obsocialbookmarkerbloglines'] = 'Bloglines!';
 	$bookmark_list['obsocialbookmarkerbookmark'] = 'Bookmark.it!';
 	$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!!';
-
+	$bookmark_list['obsocialbookmarkerwink'] = 'Wink!';
+	$bookmark_list['obsocialbookmarkerlinkagogo'] = 'LinkaGoGo!';
 
 
 	foreach ($bookmark_list as $key => $data) {
@@ -475,7 +490,8 @@ function unset_obsocialbookmarker_options(){
 	$bookmark_list['obsocialbookmarkerbloglines'] = 'Bloglines!';
 	$bookmark_list['obsocialbookmarkerbookmark'] = 'Bookmark.it!';
 	$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!!';
-
+	$bookmark_list['obsocialbookmarkerwink'] = 'Wink!';
+	$bookmark_list['obsocialbookmarkerlinkagogo'] = 'LinkaGoGo!';
 
 	foreach ($bookmark_list as $key => $data) {
 		delete_option($key);
