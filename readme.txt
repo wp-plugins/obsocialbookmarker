@@ -4,7 +4,7 @@ Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.3
 Stable tag: obsocialbookmarker
-Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it.
+Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it, wink, linkagogo,rawsugar,fark,squidoo.
 
 == Description ==
 
@@ -49,16 +49,16 @@ Supporting sites:
 * Slashdot it
 * Wink
 * LinkaGoGo
+* Rawsugar
+* Fark
+* Squidoo
 
-
-New Features in version 3.3
+New Features in version 3.4
 ---------------------------
 
-Some sites due to different style sheet, may show images verically.
+RSS Feed now longer will have bookmarks included!
 
-To tackle this I added style="float:none" in HTML IMAGE TAG.
-
-Added two new bookmark.
+Added three new bookmark.
 
 == Installation ==
 
