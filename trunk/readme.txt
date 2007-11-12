@@ -1,5 +1,5 @@
 === obsocialbookmarker ===
-Version: 3.3
+Version: 3.5
 Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.3
@@ -53,10 +53,10 @@ Supporting sites:
 * Fark
 * Squidoo
 
-New Features in version 3.4
+New Features in version 3.5
 ---------------------------
 
-RSS Feed now longer will have bookmarks included!
+Bug raised due to no bookmark selected sorted out!
 
 Added three new bookmark.
 
