@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo,rawsugar,fark,squidoo.
-Version: 3.5
+Version: 4.0
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -47,7 +47,6 @@ function print_obsocialbookmarker_options_form() {
 	$bookmark_list['obsocialbookmarkerrawsugar'] = 'Rawsugar';
 	$bookmark_list['obsocialbookmarkersquidoo'] = 'Squidoo';
 	$bookmark_list['obsocialbookmarkerfark'] = 'Fark';
-
 	$bookmark_list['obsocialbookmarkerbackflip'] = 'Backflip';
 	$bookmark_list['obsocialbookmarkerspurl'] = 'Spurl';
 	$bookmark_list['obsocialbookmarkermisterwong'] = 'Mister Wong!!';
@@ -101,11 +100,89 @@ function print_obsocialbookmarker_options_form() {
 				</div> <?php
 		}
 	}
+	
+	if ($_REQUEST['position']){
+		if ($_REQUEST['obsocialbookmarker_content_b']=="1"){
+			update_option('obsocialbookmarker_content_b',"1");
+			$ok = true;
+		}else{
+			update_option('obsocialbookmarker_content_b',"0");
+			$ok = true;
+		}
 
+		if ($_REQUEST['obsocialbookmarker_content_a']=="1"){
+			update_option('obsocialbookmarker_content_a',"1");
+			$ok = true;
+		}else{
+			update_option('obsocialbookmarker_content_a',"0");
+			$ok = true;
+		}
+
+		if ($_REQUEST['obsocialbookmarker_excerpt_b']=="1"){
+			update_option('obsocialbookmarker_excerpt_b',"1");
+			$ok = true;
+		}else{
+			update_option('obsocialbookmarker_excerpt_b',"0");
+			$ok = true;
+		}
+
+		if ($_REQUEST['obsocialbookmarker_excerpt_a']=="1"){
+			update_option('obsocialbookmarker_excerpt_a',"1");
+			$ok = true;
+		}else{
+			update_option('obsocialbookmarker_excerpt_a',"0");
+			$ok = true;
+		}
+
+		if ($ok){
+			?><div id="message" class="updated fade">
+				<p>Options Saved</p>
+				</div> <?php
+		}else{
+			?><div id="message" class="error fade">
+				<p>Faied to Save Options</p>
+				</div> <?php
+		}
+	}
 	
 	?>
 	<div class="wrap">
-	<h2><?php _e('obsocialbookmarker Options') ?></h2>
+	<h2><?php _e('Bookmarks Position Options') ?></h2>
+	<form method="post">
+	<p class="submit"><input type="submit" name="position" value="Submit" /></p>
+	<ul> 
+		<li> 
+			<label for="obsocialbookmarker_content_b"> 
+			<input name="obsocialbookmarker_content_b" type="checkbox" id="obsocialbookmarker_content_b" value="1" <?php checked('1', get_option('obsocialbookmarker_content_b')); ?>/> 
+			Place Before Each Post
+			</label> 
+		</li>
+		<li> 
+			<label for="obsocialbookmarker_content_a"> 
+			<input name="obsocialbookmarker_content_a" type="checkbox" id="obsocialbookmarker_content_a" value="1" <?php checked('1', get_option('obsocialbookmarker_content_a')); ?>/> 
+			Place After Each Post
+			</label> 
+		</li>
+		<li> 
+			<label for="obsocialbookmarker_excerpt_b"> 
+			<input name="obsocialbookmarker_excerpt_b" type="checkbox" id="obsocialbookmarker_excerpt_b" value="1" <?php checked('1', get_option('obsocialbookmarker_excerpt_b')); ?>/> 
+			Place Before Each Excerpt
+			</label> 
+		</li>
+		<li> 
+			<label for="obsocialbookmarker_excerpt_a"> 
+			<input name="obsocialbookmarker_excerpt_a" type="checkbox" id="obsocialbookmarker_excerpt_a" value="1" <?php checked('1', get_option('obsocialbookmarker_excerpt_a')); ?>/> 
+			Place After Each Excerpt
+			</label> 
+		</li>
+
+	</ul> 
+	<p class="submit"><input type="submit" name="position" value="Submit" /></p>
+	</form>
+	</div>
+
+	<div class="wrap">
+	<h2><?php _e('Bookmarks Options') ?></h2>
 	<form method="post">
 	<p class="submit"><input type="submit" name="submit" value="Submit" /></p>
 	<ul> <?php 
@@ -127,6 +204,7 @@ function print_obsocialbookmarker_options_form() {
 	<p class="submit"><input type="submit" name="submit" value="Submit" /></p>
 	</form>
 	</div>
+
 	<?
 	
 }
@@ -537,23 +615,55 @@ function unset_obsocialbookmarker_options(){
 }
 
 
-function obsocialbookmarker($content)
+function obsocialbookmarker_c($content)
 {
-	if(!is_feed())
-		return "$content\n".obsocialbookmarkerLinks();
-	else
+	$final_content = $content;
+
+	if (get_option('obsocialbookmarker_content_a')=='1')
+		$final_content =  $final_content."\n".obsocialbookmarkerLinks();
+
+	if (get_option('obsocialbookmarker_content_b')=='1')
+		$final_content =  obsocialbookmarkerLinks()."\n".$final_content;
+
+	if(!is_feed()){
+		return $final_content."\n";
+	}else{
 		return "$content\n";
+	}
 }
+
+
+function obsocialbookmarker_e($excerpt)
+{
+	$final_excerpt = $excerpt;
+
+	if (get_option('obsocialbookmarker_excerpt_a')=='1')
+		$final_excerpt =  $final_excerpt."\n".obsocialbookmarkerLinks();
+
+	if (get_option('obsocialbookmarker_excerpt_b')=='1')
+		$final_excerpt =  obsocialbookmarkerLinks()."\n".$final_excerpt;
+
+	if(!is_feed()){
+		return $final_excerpt."\n";
+	}else{
+		return "$excerpt\n";
+	}
+}
+
 
 
 if (function_exists('add_action')) {
 	// Hook for adding admin menus
 	add_action('admin_menu', 'obsocialbookmarker_add_pages');
-	add_action('the_content', 'obsocialbookmarker');
+	add_action('the_content', 'obsocialbookmarker_c');
+	add_action('the_excerpt', 'obsocialbookmarker_e');
 }
 
+if (function_exists('register_activation_hook')) {
+	register_activation_hook(_FILE_,'set_obsocialbookmarker_options');
+}
 
-register_activation_hook(_FILE_,'set_obsocialbookmarker_options');
-register_deactivation_hook(_FILE_, 'unset_obsocialbookmarker_options')
-
+if (function_exists('register_deactivation_hook')) {
+	register_deactivation_hook(_FILE_, 'unset_obsocialbookmarker_options');
+}
 ?>
