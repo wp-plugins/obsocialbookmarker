@@ -1,5 +1,5 @@
 === obsocialbookmarker ===
-Version: 3.5
+Version: 4.0
 Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.3
@@ -7,8 +7,15 @@ Stable tag: obsocialbookmarker
 Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it, wink, linkagogo,rawsugar,fark,squidoo.
 
 == Description ==
+**obsocialbookmarker** is a social bookmarking plugin which adds user-submission links at the bottom of each post for various social bookmarking sites which allows your visitors to easily submit them in a number of social bookmarking sites.
 
-Oracle Brains Social Book Marker adds user-submission links at the bottom of each post for various social bookmarking sites which allow your visitors to easily submit them in a number of social bookmarking sites.
+Bookmarks of your choice and position of bookmarks can be configured from the options page. 
+
+Installation is as simple as copy and paste and in case of upgradation simple as overwriting the old files.No need to touch your template or anything.
+
+You have the option to choose which bookmarks you want to enabled, and in what positions.
+
+I have tried my best to make installation as simple as possible without sacrificing any usability.
 
 Supporting sites:
 * Del.icio.us
@@ -53,23 +60,28 @@ Supporting sites:
 * Fark
 * Squidoo
 
-New Features in version 3.5
----------------------------
+New Features in version 4.0
 
-Bug raised due to no bookmark selected sorted out!
+Introduced new feature to position the bookmark at following positions:
 
-Added three new bookmark.
+1.	Top of the Post
+2.	Bottom of the Post
+3.	Top of the Excerpt
+4.	Bottom of the Excerpt
+
 
 == Installation ==
 
 1. Upload 'obsocialbookmarker.php' to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to "Options"->"obsocialbookmarker" and enabled the bookmark you want to enable
+3. Go to "Options"->"obsocialbookmarker" and you will have choice to do following two things
+	a.	Tick the position where you want to show the Bookmarks.
+	b.	Tick the Bookmarks which you want to show.
 
 == Upgradation ==
 1. Simple follow step given as Installation and overwrite the existing file.
 
-Thats it!
+Thats it, you are ready to rock!
 
 == Frequently Asked Questions ==
 
