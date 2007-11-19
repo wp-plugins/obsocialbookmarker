@@ -249,7 +249,7 @@ function obsocialbookmarkerLinks()
 		)
 		,'facebook' => array(
 			'title' => 'Share on Facebook!'
-			, 'link' => 'http://www.facebook.com/share.php?u='.$link.'"'
+			, 'link' => 'http://www.facebook.com/share.php?u='.$link.''
 			, 'img' => '"http://www.facebook.com/favicon.ico" width="16" height="16" alt="Facebook"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerfacebook')
