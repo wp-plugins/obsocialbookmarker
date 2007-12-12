@@ -205,7 +205,7 @@ function print_obsocialbookmarker_options_form() {
 	</form>
 	</div>
 
-	<?
+	<?php
 	
 }
 
