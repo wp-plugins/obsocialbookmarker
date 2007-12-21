@@ -1,10 +1,10 @@
 === obsocialbookmarker ===
-Version: 4.0
+Version: 4.1
 Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.3
 Stable tag: obsocialbookmarker
-Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it, wink, linkagogo,rawsugar,fark,squidoo.
+Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it, wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists.
 
 == Description ==
 **obsocialbookmarker** is a social bookmarking plugin which adds user-submission links at the bottom of each post for various social bookmarking sites which allows your visitors to easily submit them in a number of social bookmarking sites.
@@ -59,16 +59,16 @@ Supporting sites:
 * Rawsugar
 * Fark
 * Squidoo
+* Blogmarks
+* Blinkbits
+* Connotea
+* Smarking
+* Wists
 
-New Features in version 4.0
 
-Introduced new feature to position the bookmark at following positions:
+New Features in version 4.1
 
-1.	Top of the Post
-2.	Bottom of the Post
-3.	Top of the Excerpt
-4.	Bottom of the Excerpt
-
+Added few more bookmarks!
 
 == Installation ==
 
