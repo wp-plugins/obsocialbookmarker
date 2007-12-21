@@ -3,8 +3,8 @@
 /*
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
-Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo,rawsugar,fark,squidoo.
-Version: 4.0
+Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists.
+Version: 4.1
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -26,14 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 */
 
-
-// action function for above hook
-function obsocialbookmarker_add_pages() {
-    // Add a new submenu under Options:
-    add_options_page('obsocialbookmarker', 'obsocialbookmarker', 'manage_options', _FILE_, 'print_obsocialbookmarker_options_form');
-}
-
-function print_obsocialbookmarker_options_form() {
+function obsocialbookmarker_bookmark_list() {
 	$bookmark_list = array();
 	$bookmark_list['obsocialbookmarkerdelicious'] = 'Del.icio.us';
 	$bookmark_list['obsocialbookmarkerfacebook'] = 'Facebook';
@@ -74,6 +67,25 @@ function print_obsocialbookmarker_options_form() {
 	$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!';
 	$bookmark_list['obsocialbookmarkerwink'] = 'Wink!';
 	$bookmark_list['obsocialbookmarkerlinkagogo'] = 'LinkaGoGo!';
+	$bookmark_list['obsocialbookmarkersmarking'] = 'Smarking!';
+	$bookmark_list['obsocialbookmarkerconnotea'] = 'Connotea!';
+	$bookmark_list['obsocialbookmarkerwists'] = 'Wists!';
+	$bookmark_list['obsocialbookmarkerblinkbits'] = 'Blinkbits!';
+	$bookmark_list['obsocialbookmarkerblogmarks'] = 'Blogmarks!';
+
+	return $bookmark_list;
+}
+
+// action function for above hook
+function obsocialbookmarker_add_pages() {
+    // Add a new submenu under Options:
+    add_options_page('obsocialbookmarker', 'obsocialbookmarker', 'manage_options', _FILE_, 'print_obsocialbookmarker_options_form');
+}
+
+function print_obsocialbookmarker_options_form() {
+	$bookmark_list = array();
+	unset($bookmark_list);
+	$bookmark_list = obsocialbookmarker_bookmark_list();
 
 	$ok = false;	
 
@@ -496,7 +508,43 @@ function obsocialbookmarkerLinks()
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerfark')
 			)
-);
+		,'smarking' => array(
+				'title' => 'Smarking'
+				, 'link' => 'http://smarking.com/editbookmark/?url='.$link
+				, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/smarking.gif" width="16" height="16" alt="Smarking"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkersmarking')
+			)
+		,'connotea' => array(
+				'title' => 'Connotea'
+				, 'link' => 'http://www.connotea.org/addpopup?continue=confirm&uri='.$link.'&title='.$title
+				, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/connotea.gif" width="16" height="16" alt="Connotea"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerconnotea')
+			)
+		,'wists' => array(
+				'title' => 'Wists'
+				, 'link' => 'http://wists.com/r.php?c=&r='.$link.'&tot;e='.$title
+				, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/wists.gif" width="16" height="16" alt="Wists"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerwists')
+			)
+		,'blinkbits' => array(
+				'title' => 'Blinkbits'
+				, 'link' => ' http://www.blinkbits.com/bookmarklets/save.php?v=1&source_url='.$link
+				, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/blinkbits.gif" width="16" height="16" alt="Blinkbits"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerblinkbits')
+			)
+		,'blogmarks' => array(
+				'title' => 'Blogmarks'
+				, 'link' => 'http://blogmarks.net/my/new.php?mini=1&simple=1&url='.$link.'&title='.$title
+				, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/blogmarks.gif" width="16" height="16" alt="Blogmarks"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerblogmarks')
+			)
+					
+	);
 
 	$bookmarker = array();
 	unset($bookmarker);
@@ -518,46 +566,8 @@ function obsocialbookmarkerLinks()
 function set_obsocialbookmarker_options(){
 	$bookmark_list = array();
 	unset($bookmark_list);
-	$bookmark_list['obsocialbookmarkerdelicious'] = 'Del.icio.us';
-	$bookmark_list['obsocialbookmarkerfacebook'] = 'Facebook';
-	$bookmark_list['obsocialbookmarkerstumble'] = 'StumbleUpon';
-	$bookmark_list['obsocialbookmarkernewsvine'] = 'Newsvine';
-	$bookmark_list['obsocialbookmarkertechnorati'] = 'Technorati';
-	$bookmark_list['obsocialbookmarkeryahoo'] = 'Yahoo';
-	$bookmark_list['obsocialbookmarkerask'] = 'Ask';
-	$bookmark_list['obsocialbookmarkerslashdot'] = 'Slashdot it';
-	$bookmark_list['obsocialbookmarkersimpy'] = 'Simpy';
-	$bookmark_list['obsocialbookmarkerrawsugar'] = 'Rawsugar';
-	$bookmark_list['obsocialbookmarkersquidoo'] = 'Squidoo';
-	$bookmark_list['obsocialbookmarkerfark'] = 'Fark';
+	$bookmark_list = obsocialbookmarker_bookmark_list();
 
-	$bookmark_list['obsocialbookmarkerbackflip'] = 'Backflip';
-	$bookmark_list['obsocialbookmarkerspurl'] = 'Spurl';
-	$bookmark_list['obsocialbookmarkermisterwong'] = 'Mister Wong!!';
-	$bookmark_list['obsocialbookmarkermisterwongcn'] = 'Mister Wong China!!';
-	$bookmark_list['obsocialbookmarkermisterwongde'] = 'Mister Wong Germany!!';
-	$bookmark_list['obsocialbookmarkermisterwongfr'] = 'Mister Wong France!!';
-	$bookmark_list['obsocialbookmarkermisterwongru'] = 'Mister Wong Russia!!';
-	$bookmark_list['obsocialbookmarkermisterwonges'] = 'Mister Wong Spain!!';
-	$bookmark_list['obsocialbookmarkernetvouz'] = 'Netvouz';
-	$bookmark_list['obsocialbookmarkerdiigo'] = 'Diigo';
-	$bookmark_list['obsocialbookmarkersegnalo'] = 'Segnalo';
-	$bookmark_list['obsocialbookmarkerdropjack'] = 'Dropjack';
-	$bookmark_list['obsocialbookmarkergoogle'] = 'Google';
-	$bookmark_list['obsocialbookmarkerdigg'] = 'Digg it';
-	$bookmark_list['obsocialbookmarkerfurl'] = 'Furl';
-	$bookmark_list['obsocialbookmarkerreddit'] = 'Reddit';
-	$bookmark_list['obsocialbookmarkerwindowslive'] = 'Windows Live!';
-	$bookmark_list['obsocialbookmarkertailrank'] = 'Tailrank!';
-	$bookmark_list['obsocialbookmarkernetscape'] = 'Netscape!';	
-	$bookmark_list['obsocialbookmarkerblinklist'] = 'BlinkList!';
-	$bookmark_list['obsocialbookmarkerfeedmelinks'] = 'Feed Me Links!';
-	$bookmark_list['obsocialbookmarkercomments'] = 'co.mments!';
-	$bookmark_list['obsocialbookmarkerbloglines'] = 'Bloglines!';
-	$bookmark_list['obsocialbookmarkerbookmark'] = 'Bookmark.it!';
-	$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!!';
-	$bookmark_list['obsocialbookmarkerwink'] = 'Wink!';
-	$bookmark_list['obsocialbookmarkerlinkagogo'] = 'LinkaGoGo!';
 
 
 	foreach ($bookmark_list as $key => $data) {
@@ -568,46 +578,9 @@ function set_obsocialbookmarker_options(){
 function unset_obsocialbookmarker_options(){
 	$bookmark_list = array();
 	unset($bookmark_list);
-	$bookmark_list['obsocialbookmarkerdelicious'] = 'Del.icio.us';
-	$bookmark_list['obsocialbookmarkerfacebook'] = 'Facebook';
-	$bookmark_list['obsocialbookmarkerstumble'] = 'StumbleUpon';
-	$bookmark_list['obsocialbookmarkernewsvine'] = 'Newsvine';
-	$bookmark_list['obsocialbookmarkertechnorati'] = 'Technorati';
-	$bookmark_list['obsocialbookmarkeryahoo'] = 'Yahoo';
-	$bookmark_list['obsocialbookmarkerask'] = 'Ask';
-	$bookmark_list['obsocialbookmarkerslashdot'] = 'Slashdot it';
-	$bookmark_list['obsocialbookmarkersimpy'] = 'Simpy';
-	$bookmark_list['obsocialbookmarkerrawsugar'] = 'Rawsugar';
-	$bookmark_list['obsocialbookmarkersquidoo'] = 'Squidoo';
-	$bookmark_list['obsocialbookmarkerfark'] = 'Fark';
+	$bookmark_list = obsocialbookmarker_bookmark_list();
 
-	$bookmark_list['obsocialbookmarkerbackflip'] = 'Backflip';
-	$bookmark_list['obsocialbookmarkerspurl'] = 'Spurl';
-	$bookmark_list['obsocialbookmarkermisterwong'] = 'Mister Wong!!';
-	$bookmark_list['obsocialbookmarkermisterwongcn'] = 'Mister Wong China!!';
-	$bookmark_list['obsocialbookmarkermisterwongde'] = 'Mister Wong Germany!!';
-	$bookmark_list['obsocialbookmarkermisterwongfr'] = 'Mister Wong France!!';
-	$bookmark_list['obsocialbookmarkermisterwongru'] = 'Mister Wong Russia!!';
-	$bookmark_list['obsocialbookmarkermisterwonges'] = 'Mister Wong Spain!!';
-	$bookmark_list['obsocialbookmarkernetvouz'] = 'Netvouz';
-	$bookmark_list['obsocialbookmarkerdiigo'] = 'Diigo';
-	$bookmark_list['obsocialbookmarkersegnalo'] = 'Segnalo';
-	$bookmark_list['obsocialbookmarkerdropjack'] = 'Dropjack';
-	$bookmark_list['obsocialbookmarkergoogle'] = 'Google';
-	$bookmark_list['obsocialbookmarkerdigg'] = 'Digg it';
-	$bookmark_list['obsocialbookmarkerfurl'] = 'Furl';
-	$bookmark_list['obsocialbookmarkerreddit'] = 'Reddit';
-	$bookmark_list['obsocialbookmarkerwindowslive'] = 'Windows Live!';
-	$bookmark_list['obsocialbookmarkertailrank'] = 'Tailrank!';
-	$bookmark_list['obsocialbookmarkernetscape'] = 'Netscape!';	
-	$bookmark_list['obsocialbookmarkerblinklist'] = 'BlinkList!';
-	$bookmark_list['obsocialbookmarkerfeedmelinks'] = 'Feed Me Links!';
-	$bookmark_list['obsocialbookmarkercomments'] = 'co.mments!';
-	$bookmark_list['obsocialbookmarkerbloglines'] = 'Bloglines!';
-	$bookmark_list['obsocialbookmarkerbookmark'] = 'Bookmark.it!';
-	$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!!';
-	$bookmark_list['obsocialbookmarkerwink'] = 'Wink!';
-	$bookmark_list['obsocialbookmarkerlinkagogo'] = 'LinkaGoGo!';
+
 
 	foreach ($bookmark_list as $key => $data) {
 		delete_option($key);
@@ -660,10 +633,10 @@ if (function_exists('add_action')) {
 }
 
 if (function_exists('register_activation_hook')) {
-	register_activation_hook(_FILE_,'set_obsocialbookmarker_options');
+	register_activation_hook('obsocialbookmarker.php','set_obsocialbookmarker_options');
 }
 
 if (function_exists('register_deactivation_hook')) {
-	register_deactivation_hook(_FILE_, 'unset_obsocialbookmarker_options');
+	register_deactivation_hook('obsocialbookmarker.php', 'unset_obsocialbookmarker_options');
 }
 ?>
