@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists.
-Version: 4.1
+Version: 4.1.1
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -73,6 +73,7 @@ function obsocialbookmarker_bookmark_list() {
 	$bookmark_list['obsocialbookmarkerblinkbits'] = 'Blinkbits!';
 	$bookmark_list['obsocialbookmarkerblogmarks'] = 'Blogmarks!';
 
+	$bookmark_list['obsocialbookmarkerjeqq'] = 'Jeqq!';
 	return $bookmark_list;
 }
 
@@ -543,7 +544,13 @@ function obsocialbookmarkerLinks()
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerblogmarks')
 			)
-					
+		,'jeqq' => array(
+				'title' => 'Jeqq'
+				, 'link' => 'http://www.jeqq.com/submit.php?url='.$link.'&title='.$title
+				, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/jeqq.gif" width="16" height="16" alt="Jeqq"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerjeqq')
+			)					
 	);
 
 	$bookmarker = array();
