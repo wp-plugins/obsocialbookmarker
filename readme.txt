@@ -3,7 +3,7 @@ Version: 4.1.1
 Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.3
-Stable tag: obsocialbookmarker
+Stable tag: obsocialbookmarker version 4.1.1
 Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it, wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, jeqq.
 
 == Description ==
