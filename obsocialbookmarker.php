@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext.
-Version: 4.1.2
+Version: 4.2.0
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -581,7 +581,7 @@ function obsocialbookmarkerLinks()
 	unset($bookmarker);
 	foreach ($social_sites as $key => $data) {
 		if ($data['visible'] == '1'){
-			$bookmarker[$key] = '<a href="'.$data['link'].'" target="_blank"'.' title="'.$data['title'].'"> <img src='.$data['img'].' style="float:none"/></a>';
+			$bookmarker[$key] = '<a href="'.$data['link'].'" target="_blank"'.' title="'.$data['title'].'"> <img style="-moz-opacity:0.5;filter:alpha(opacity=50);" onmouseover="this.style.MozOpacity=1; this.filters.alpha.opacity=100" onmouseout="this.style.MozOpacity=0.5; this.filters.alpha.opacity=50" src='.$data['img'].' style="float:none"/></a>';
 		}
 	}
 	
@@ -653,8 +653,6 @@ function obsocialbookmarker_e($excerpt)
 		return "$excerpt\n";
 	}
 }
-
-
 
 if (function_exists('add_action')) {
 	// Hook for adding admin menus

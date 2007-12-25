@@ -1,5 +1,5 @@
 === obsocialbookmarker ===
-Version: 4.1.2
+Version: 4.2.0
 Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.3
@@ -69,9 +69,10 @@ Supporting sites:
 * Webride
 * Thisnext
 
-New Features in version 4.1.2
+New Features in version 4.2.0
+Bookmark images will appear semi-transparent when the mouse is not over them.
 
-Added few more bookmarks!
+
 
 == Installation ==
 
