@@ -3,8 +3,8 @@
 /*
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
-Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext.
-Version: 4.2.0
+Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan.
+Version: 4.2.1
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -76,6 +76,8 @@ function obsocialbookmarker_bookmark_list() {
 	$bookmark_list['obsocialbookmarkerwykop'] = 'Wykop!';
 	$bookmark_list['obsocialbookmarkerwebride'] = 'Webride!';
 	$bookmark_list['obsocialbookmarkerthisnext'] = 'ThisNext!';
+	$bookmark_list['obsocialbookmarkerwirefan'] = 'Wirefan!';
+
 
 	return $bookmark_list;
 }
@@ -554,27 +556,34 @@ function obsocialbookmarkerLinks()
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerjeqq')
 			)					
-		,'Wykop' => array(
+		,'wykop' => array(
 				'title' => 'Wykop'
 				, 'link' => 'http://www.wykop.pl/dodaj?url='.$link
 				, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/wykop.png" width="16" height="16" alt="Wykop"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerwykop')
 			)		
-		,'Webride' => array(
+		,'webride' => array(
 				'title' => 'Webride'
 				, 'link' => 'http://webride.org/discuss/split.php?uri='.$link.'&title='.$title
 				, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/webride.png" width="16" height="16" alt="Webride"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerwebride')
 			)		
-		,'ThisNext' => array(
+		,'thisnext' => array(
 				'title' => 'ThisNext'
 				, 'link' => 'http://www.thisnext.com/pick/new/submit/sociable/?url='.$link.'&name='.$title
 				, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/thisnext.png" width="16" height="16" alt="ThisNext"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerthisnext')
 			)		
+		,'wirefan' => array(
+				'title' => 'Wirefan'
+				, 'link' => 'http://www.wirefan.com/grpost.php?u='.$link.'&title='.$title
+				, 'img' => '"http://www.oraclebrains.com/download/obsocialbookmarker/images/wirefan.gif" width="16" height="16" alt="Wirefan"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerwirefan')
+			)						
 	);
 
 	$bookmarker = array();
