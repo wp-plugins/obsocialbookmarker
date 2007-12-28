@@ -47,8 +47,6 @@ Upgradation where old version is less than version 5 and new version which you w
 		a.	Tick the position where you want to show the Bookmarks.
 		b.	Tick the Bookmarks which you want to show.
 
-1. Simple follow step given as Installation and overwrite the existing file.
-
 Thats it, you are ready to rock!
 
 == Frequently Asked Questions ==
