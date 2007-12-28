@@ -53,7 +53,7 @@ Thats it, you are ready to rock!
 
 == Frequently Asked Questions ==
 
-Guys Have two blog about obsocialbookmarker where I am trying to share thinking and updates about it.
+Guys I have two blog about obsocialbookmarker where I am trying to share thinking and updates about it.
 
 http://obsocialbookmarker.blogspot.com/
 
