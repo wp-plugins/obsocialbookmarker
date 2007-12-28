@@ -27,8 +27,10 @@ I have tried my best to make installation as simple as possible without sacrific
 2. Activate the plugin through the 'Plugins' menu in WordPress
 	
 3. Go to "Options"->"obsocialbookmarker" and you will have choice to do following two things
-	a.	Tick the position where you want to show the Bookmarks.
-	b.	Tick the Bookmarks which you want to show.
+
+	*	Tick the position where you want to show the Bookmarks.
+
+	*	Tick the Bookmarks which you want to show.
 	
 	
 **Upgradation**
@@ -44,8 +46,10 @@ Upgradation where old version is less than version 5 and new version which you w
 4.	Activate the plugin through the 'Plugins' menu in WordPress
 	
 5.	Go to "Options"->"obsocialbookmarker" and you will have choice to do following two things
-		a.	Tick the position where you want to show the Bookmarks.
-		b.	Tick the Bookmarks which you want to show.
+
+		*	Tick the position where you want to show the Bookmarks.
+
+		*	Tick the Bookmarks which you want to show.
 
 Thats it, you are ready to rock!
 
