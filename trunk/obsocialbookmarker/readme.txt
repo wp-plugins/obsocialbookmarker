@@ -47,9 +47,9 @@ Upgradation where old version is less than version 5 and new version which you w
 	
 5.	Go to "Options"->"obsocialbookmarker" and you will have choice to do following two things
 
-		*	Tick the position where you want to show the Bookmarks.
+	*	Tick the position where you want to show the Bookmarks.
 
-		*	Tick the Bookmarks which you want to show.
+	*	Tick the Bookmarks which you want to show.
 
 Thats it, you are ready to rock!
 
