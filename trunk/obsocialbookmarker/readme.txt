@@ -21,7 +21,7 @@ I have tried my best to make installation as simple as possible without sacrific
 == Installation ==
 
 **Installation**
-1. Upload 'obsocialbookmarker.php' to the '/wp-content/plugins/' directory
+1. Upload 'obsocialbookmarker' to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Go to "Options"->"obsocialbookmarker" and you will have choice to do following two things
 	a.	Tick the position where you want to show the Bookmarks.
