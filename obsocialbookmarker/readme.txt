@@ -51,5 +51,11 @@ Upgradation where old version is less than version 5 and new version which you w
 
 Thats it, you are ready to rock!
 
+== Frequently Asked Questions ==
 
+Guys Have two blog about obsocialbookmarker where I am trying to share thinking and updates about it.
+
+http://obsocialbookmarker.blogspot.com/
+
+http://obsocialbookmark.wordpress.com/
 
