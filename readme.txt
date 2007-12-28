@@ -53,11 +53,5 @@ Upgradation where old version is less than version 5 and new version which you w
 
 Thats it, you are ready to rock!
 
-== Frequently Asked Questions ==
-
-*Why images are not within plugin?
-
-I deliberately didn't added images to make installation easy. Bookmark icon are fetch either from original site or plugin parent site.
-
 
 
