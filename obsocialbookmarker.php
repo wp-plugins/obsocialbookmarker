@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan.
-Version: 5.0.0
+Version: 5.1.0
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -24,6 +24,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 */
+
+function obsocialbookmarker_get_version() {
+	return '5.1.0';	
+}
 
 function obsocialbookmarker_bookmark_list() {
 	$bookmark_list = array();
@@ -88,6 +92,7 @@ function obsocialbookmarker_add_pages() {
 }
 
 function print_obsocialbookmarker_options_form() {
+	$obsocialbookmarker_version = obsocialbookmarker_get_version();
 	$bookmark_list = array();
 	unset($bookmark_list);
 	$bookmark_list = obsocialbookmarker_bookmark_list();
@@ -162,7 +167,44 @@ function print_obsocialbookmarker_options_form() {
 		}
 	}
 	
+
+
+
+	$handle = fopen("http://svn.wp-plugins.org/obsocialbookmarker/trunk/obsocialbookmarker/obsocialbookmarker.info", "r");
+	$obsocialbookmarker_new_version = 0;
+	while (!feof($handle)) {
+		$buffer = fgets($handle);
+		if ( (substr($buffer,0, 7)) == 'Version'){
+			$buffer = split(':',$buffer);
+			if (trim($buffer[1]) <> $obsocialbookmarker_version){
+				$obsocialbookmarker_new_version = 1;
+			?>
+				<div class="wrap">
+				<h2><?php _e('New Version Available') ?></h2>
+					<label for="obsocialbookmarker_updation"> 
+						Newer Version <b><?php echo $buffer[1] ?> </b>Available, Please Upgrade to newer version to get best of obsocialbookmarker plugin. Click <a href="http://downloads.wordpress.org/plugin/obsocialbookmarker.zip">here</a> to download.<BR><BR>
+			<?php
+
+			}
+		}
+		if ( ((substr($buffer,0, 3)) == 'Msg')&& ($obsocialbookmarker_new_version == 1) ){
+			$buffer = split(':',$buffer);
+			?>
+				<b>New Features<BR></b><?php echo $buffer[1] ?> 
+			</label> 
+			</div>
+			<?php 
+
+		}
+	}
+
+
+
 	?>
+
+
+
+
 	<div class="wrap">
 	<h2><?php _e('Bookmarks Position Options') ?></h2>
 	<form method="post">
