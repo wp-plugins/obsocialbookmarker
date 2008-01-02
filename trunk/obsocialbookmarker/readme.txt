@@ -1,9 +1,9 @@
 === obsocialbookmarker ===
-Version: 5.1.2
+Version: 5.1.3
 Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.3
-Stable tag: obsocialbookmarker version 5.1.2
+Stable tag: obsocialbookmarker version 5.1.3
 Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it, wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, jeqq, wykop, webride, thisnext, wirefan, taggly, sphere, fleck
 
 **obsocialbookmarker** is a social bookmarking plugin which adds user-submission links at the bottom of each post for various social bookmarking sites which allows your visitors to easily submit them in a number of social bookmarking sites.
@@ -29,6 +29,8 @@ I have tried my best to make installation as simple as possible without sacrific
 	*	Tick the position where you want to show the Bookmarks.
 
 	*	Tick the Bookmarks which you want to show.
+
+4. It also provide a function called "obsocialbookmarker_button()", which can be called in template anywhere you wish to show the bookmark bar.
 	
 	
 **Upgradation**
@@ -49,6 +51,8 @@ Upgradation where old version is less than version 5 and new version which you w
 
 	*	Tick the Bookmarks which you want to show.
 
+6.	It also provide a function called "obsocialbookmarker_button()", which can be called in template anywhere you wish to show the bookmark bar.
+
 Thats it, you are ready to rock!
 
 == Frequently Asked Questions ==
@@ -58,4 +62,8 @@ Guys I have two blog about obsocialbookmarker where I am trying to share thinkin
 http://obsocialbookmarker.blogspot.com/
 
 http://obsocialbookmark.wordpress.com/
+
+== Template Tags ==
+
+obsocialboomarker provide a function called "obsocialbookmarker_button()", which can be called in template anywhere you wish to show the bookmark bar.
 
