@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck.
-Version: 5.1.2
+Version: 5.1.3
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function obsocialbookmarker_get_version() {
-	return '5.1.2';	
+	return '5.1.3';	
 }
 
 function obsocialbookmarker_bookmark_list() {
@@ -744,6 +744,12 @@ function obsocialbookmarker_e($excerpt)
 		return "$excerpt\n";
 	}
 }
+
+function obsocialbookmarker_button()
+{
+	echo obsocialbookmarkerLinks();
+}
+
 
 if (function_exists('add_action')) {
 	// Hook for adding admin menus
