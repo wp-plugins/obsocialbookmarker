@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck.
-Version: 5.1.5
+Version: 5.1.6
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -26,8 +26,21 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function obsocialbookmarker_get_version() {
-	return '5.1.5';	
+	return '5.1.6';	
 }
+
+
+function obsocialbookmarker_option_list() {
+	$ob_option_list = array();
+	$ob_option_list['obsocialbookmarker_content_b'] = '0';
+	$ob_option_list['obsocialbookmarker_content_a'] = '0';
+	$ob_option_list['obsocialbookmarker_excerpt_b'] = '0';
+	$ob_option_list['obsocialbookmarker_excerpt_a'] = '0';
+	$ob_option_list['obsocialbookmarker_fadeimage'] = '0';
+
+	return $ob_option_list;
+}
+
 
 function obsocialbookmarker_bookmark_list() {
 	$bookmark_list = array();
@@ -175,6 +188,14 @@ function print_obsocialbookmarker_options_form() {
 			$ok = true;
 		}
 
+		if ($_REQUEST['obsocialbookmarker_fadeimage']=="1"){
+			update_option('obsocialbookmarker_fadeimage',"1");
+			$ok = true;
+		}else{
+			update_option('obsocialbookmarker_fadeimage',"0");
+			$ok = true;
+		}
+
 		if ($ok){
 			?><div id="message" class="updated fade">
 				<p>Options Saved</p>
@@ -219,14 +240,45 @@ function print_obsocialbookmarker_options_form() {
 	}
 
 	?>
-
-
-
-
 	<div class="wrap">
-	<h2><?php _e('Bookmarks Position Options') ?></h2>
+
+	<p class="submit">
+		<h2><?php _e('OBSocialbookmark Menu') ?></h2>
+		<table>
+		<tr>
+			<td>
+				<form method="post"> 
+					<input type="hidden" name="obsocialbookmarker_option1" value="1"/>
+					<input type="submit" name="obform" value="General Settings" />
+				</form>
+			</td>
+			<td>
+				<form method="post"> 
+					<input type="hidden" name="obsocialbookmarker_option1" value="2"/>
+					<input type="submit" name="obform" value="Select Bookmarks" />
+				</form>
+			</td>
+		</tr>
+		</table>			
+	</p>
+	</div>
+	<?php 
+	if ($_REQUEST['obsocialbookmarker_option1']=="1"){
+		print_obsocialbookmarker_global_pos_options_form();
+	}
+	
+	if ($_REQUEST['obsocialbookmarker_option1']=="2"){
+		print_obsocialbookmarker_global_bookmark_options_form();
+	}
+	
+}
+
+
+function print_obsocialbookmarker_global_pos_options_form() {
+	?>
+	<div class="wrap">
+	<h2><?php _e("General Bookmark's Options") ?></h2>
 	<form method="post">
-	<p class="submit"><input type="submit" name="position" value="Submit" /></p>
 	<ul> 
 		<li> 
 			<label for="obsocialbookmarker_content_b"> 
@@ -252,38 +304,51 @@ function print_obsocialbookmarker_options_form() {
 			Place After Each Excerpt
 			</label> 
 		</li>
+		<BR>
+		<li> 
+			<label for="obsocialbookmarker_fadeimage"> 
+			<input name="obsocialbookmarker_fadeimage" type="checkbox" id="obsocialbookmarker_fadeimage" value="1" <?php checked('1', get_option('obsocialbookmarker_fadeimage')); ?>/> 
+			Add Fading Effects to Bookmark's Image Icon
+			</label> 
+		</li>
 
 	</ul> 
 	<p class="submit"><input type="submit" name="position" value="Submit" /></p>
 	</form>
 	</div>
-
-	<div class="wrap">
-	<h2><?php _e('Bookmarks Options') ?></h2>
-	<form method="post">
-	<p class="submit"><input type="submit" name="submit" value="Submit" /></p>
-	<ul> <?php 
-	if 	(!empty($bookmark_list)){
-	foreach ($bookmark_list as $key => $data) {
-		?>	
-			<li> 
-				<label for="<?php echo $key ?>"> 
-				<input name="<?php echo $key ?>" type="checkbox" id="<?php echo $key ?>" value="1" <?php checked('1', get_option($key)); ?>/> 
-				<?php echo $data ?>
-				</label> 
-			</li>
-
-			<?php
-		}
-	}
-	?>
-	</ul> 
-	<p class="submit"><input type="submit" name="submit" value="Submit" /></p>
-	</form>
-	</div>
-
 	<?php
-	
+}
+
+
+function print_obsocialbookmarker_global_bookmark_options_form() {
+	$bookmark_list = array();
+	unset($bookmark_list);
+	$bookmark_list = obsocialbookmarker_bookmark_list();
+	?>
+		<div class="wrap">
+		<h2><?php _e('Select Bookmarks to be included') ?></h2>
+		<form method="post">
+		<p class="submit"><input type="submit" name="submit" value="Submit" /></p>
+		<ul> <?php 
+		if 	(!empty($bookmark_list)){
+		foreach ($bookmark_list as $key => $data) {
+			?>	
+				<li> 
+					<label for="<?php echo $key ?>"> 
+					<input name="<?php echo $key ?>" type="checkbox" id="<?php echo $key ?>" value="1" <?php checked('1', get_option($key)); ?>/> 
+					<?php echo $data ?>
+					</label> 
+				</li>
+
+				<?php
+			}
+		}
+		?>
+		</ul> 
+		<p class="submit"><input type="submit" name="submit" value="Submit" /></p>
+		</form>
+		</div>
+	<?php
 }
 
 
@@ -678,9 +743,16 @@ function obsocialbookmarkerLinks()
 
 	$bookmarker = array();
 	unset($bookmarker);
+	
+	$l_fade = '';
+	
+	if (get_option('obsocialbookmarker_fadeimage') == '1'){
+		$l_fade = 'style="-moz-opacity:0.5;filter:alpha(opacity=50);" onmouseover="this.style.MozOpacity=1; this.filters.alpha.opacity=100" onmouseout="this.style.MozOpacity=0.5; this.filters.alpha.opacity=50"';
+	}
+
 	foreach ($social_sites as $key => $data) {
 		if ($data['visible'] == '1'){
-			$bookmarker[$key] = '<a href="'.$data['link'].'" target="_blank"'.' title="'.$data['title'].'"> <img style="-moz-opacity:0.5;filter:alpha(opacity=50);" onmouseover="this.style.MozOpacity=1; this.filters.alpha.opacity=100" onmouseout="this.style.MozOpacity=0.5; this.filters.alpha.opacity=50" src='.$data['img'].'/></a>';
+			$bookmarker[$key] = '<a href="'.$data['link'].'" target="_blank"'.' title="'.$data['title'].'"> <img '.$l_fade.' src='.$data['img'].'/></a>';
 		}
 	}
 	
@@ -697,10 +769,14 @@ function set_obsocialbookmarker_options(){
 	$bookmark_list = array();
 	unset($bookmark_list);
 	$bookmark_list = obsocialbookmarker_bookmark_list();
-
-
-
 	foreach ($bookmark_list as $key => $data) {
+		add_option($key,'0',$key);
+	}
+
+	$ob_option_list = array();
+	unset($ob_option_list);
+	$ob_option_list = obsocialbookmarker_option_list();
+	foreach ($ob_option_list as $key => $data) {
 		add_option($key,'0',$key);
 	}
 }
@@ -709,12 +785,17 @@ function unset_obsocialbookmarker_options(){
 	$bookmark_list = array();
 	unset($bookmark_list);
 	$bookmark_list = obsocialbookmarker_bookmark_list();
-
-
-
 	foreach ($bookmark_list as $key => $data) {
 		delete_option($key);
 	}
+
+	$ob_option_list = array();
+	unset($ob_option_list);
+	$ob_option_list = obsocialbookmarker_option_list();
+	foreach ($ob_option_list as $key => $data) {
+		delete_option($key);
+	}
+
 }
 
 

@@ -1,9 +1,9 @@
 === obsocialbookmarker ===
-Version: 5.1.5
+Version: 5.1.6
 Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.3
-Stable tag: obsocialbookmarker version 5.1.5
+Stable tag: obsocialbookmarker version 5.1.6
 Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it, wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, jeqq, wykop, webride, thisnext, wirefan, taggly, sphere, fleck
 
 **obsocialbookmarker** is a social bookmarking plugin which adds user-submission links at the bottom of each post for various social bookmarking sites which allows your visitors to easily submit them in a number of social bookmarking sites.
@@ -26,16 +26,18 @@ I have tried my best to make installation as simple as possible without sacrific
 	
 3. Go to "Options"->"obsocialbookmarker" and you will have choice to do following two things
 
-	*	Tick the position where you want to show the Bookmarks.
+	*	Tick the position where you want to show the Bookmarks (Click the "General Setting" Button and choose the option).
 
-	*	Tick the Bookmarks which you want to show.
+	*	Tick the Bookmarks which you want to show (Click the "Select Bookmarks" Button and select the bookmarks).
+
+	*	Add fading effect to Bookamrk's icons (Click the "General Setting" Button and choose the option).
 
 4. It also provide a function called "obsocialbookmarker_button()", which can be called in template anywhere you wish to show the bookmark bar.
 	
 	
 **Upgradation**
 	
-Upgradation where old version is less than version 5 and new version which you want to install is version 5 or greater
+Upgradation where old version is less than version 5
 	
 1.	Don't deactivate the plugin, very important if you want to preserve old configuration.
 	
@@ -47,19 +49,35 @@ Upgradation where old version is less than version 5 and new version which you w
 	
 5.	Go to "Options"->"obsocialbookmarker" and you will have choice to do following two things
 
-	*	Tick the position where you want to show the Bookmarks.
+	*	Tick the position where you want to show the Bookmarks (Click the "General Setting" Button and choose the option).
 
-	*	Tick the Bookmarks which you want to show.
+	*	Tick the Bookmarks which you want to show (Click the "Select Bookmarks" Button and select the bookmarks).
+
+	*	Add fading effect to Bookamrk's icons (Click the "General Setting" Button and choose the option).
 
 6.	It also provide a function called "obsocialbookmarker_button()", which can be called in template anywhere you wish to show the bookmark bar.
+
+
+Upgradation where old version is greater or equal than version 5
+
+1.	Overwrite the existing directory.
+
+2.	Go to "Options"->"obsocialbookmarker" and you will have choice to do following two things
+
+	*	Tick the position where you want to show the Bookmarks (Click the "General Setting" Button and choose the option).
+
+	*	Tick the Bookmarks which you want to show (Click the "Select Bookmarks" Button and select the bookmarks).
+
+	*	Add fading effect to Bookamrk's icons (Click the "General Setting" Button and choose the option).
+
+3.	It also provide a function called "obsocialbookmarker_button()", which can be called in template anywhere you wish to show the bookmark bar.
+
 
 Thats it, you are ready to rock!
 
 == Frequently Asked Questions ==
 
 Guys I have two blog about obsocialbookmarker where I am trying to share thinking and updates about it.
-
-http://obsocialbookmarker.blogspot.com/
 
 http://obsocialbookmark.wordpress.com/
 
