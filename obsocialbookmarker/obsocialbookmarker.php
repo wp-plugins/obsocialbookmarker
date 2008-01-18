@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck.
-Version: 5.1.6
+Version: 5.1.7
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function obsocialbookmarker_get_version() {
-	return '5.1.6';	
+	return '5.1.7';	
 }
 
 
@@ -42,78 +42,110 @@ function obsocialbookmarker_option_list() {
 }
 
 
-function obsocialbookmarker_bookmark_list() {
+function obsocialbookmarker_bookmark_list($country) {
 	$bookmark_list = array();
 
-	$bookmark_list['obsocialbookmarkerask'] = 'Ask';
-	$bookmark_list['obsocialbookmarkeradditious'] = 'Additious';
-	
-	$bookmark_list['obsocialbookmarkerbackflip'] = 'Backflip';
-	$bookmark_list['obsocialbookmarkerbloglines'] = 'Bloglines!';
-	$bookmark_list['obsocialbookmarkerbookmark'] = 'Bookmark.it!';
-	$bookmark_list['obsocialbookmarkerblinklist'] = 'BlinkList!';
-	$bookmark_list['obsocialbookmarkerblinkbits'] = 'Blinkbits!';
-	$bookmark_list['obsocialbookmarkerblogmarks'] = 'Blogmarks!';
-	
-	$bookmark_list['obsocialbookmarkercomments'] = 'co.mments!';
-	$bookmark_list['obsocialbookmarkerconnotea'] = 'Connotea!';
-	
-	
-	$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!';
-	$bookmark_list['obsocialbookmarkerdelicious'] = 'Del.icio.us';
-	$bookmark_list['obsocialbookmarkerdropjack'] = 'Dropjack';
-	$bookmark_list['obsocialbookmarkerdiigo'] = 'Diigo';
-	$bookmark_list['obsocialbookmarkerdigg'] = 'Digg it';
+	if ($country == 'international'){
 
-	$bookmark_list['obsocialbookmarkerfacebook'] = 'Facebook';
-	$bookmark_list['obsocialbookmarkerfark'] = 'Fark';	
-	$bookmark_list['obsocialbookmarkerfurl'] = 'Furl';
-	$bookmark_list['obsocialbookmarkerfeedmelinks'] = 'Feed Me Links!';
-	$bookmark_list['obsocialbookmarkerfleck'] = 'Fleck!';
-	
-	$bookmark_list['obsocialbookmarkergoogle'] = 'Google';
-	
-	$bookmark_list['obsocialbookmarkerjeqq'] = 'Jeqq!';
+		$bookmark_list['obsocialbookmarkerask'] = 'Ask';
+		$bookmark_list['obsocialbookmarkeradditious'] = 'Additious';
+		
+		$bookmark_list['obsocialbookmarkerbackflip'] = 'Backflip';
+		$bookmark_list['obsocialbookmarkerbloglines'] = 'Bloglines!';
+		
+		$bookmark_list['obsocialbookmarkerblinklist'] = 'BlinkList!';
+		$bookmark_list['obsocialbookmarkerblinkbits'] = 'Blinkbits!';
+		$bookmark_list['obsocialbookmarkerblogmarks'] = 'Blogmarks!';
+		
+		$bookmark_list['obsocialbookmarkercomments'] = 'co.mments!';
+		$bookmark_list['obsocialbookmarkerconnotea'] = 'Connotea!';
+		
+		
 
-	$bookmark_list['obsocialbookmarkerlinkagogo'] = 'LinkaGoGo!';
+	
+		$bookmark_list['obsocialbookmarkerdropjack'] = 'Dropjack';
+		$bookmark_list['obsocialbookmarkerdiigo'] = 'Diigo';
+		$bookmark_list['obsocialbookmarkerdigg'] = 'Digg it';
 
-	$bookmark_list['obsocialbookmarkermisterwong'] = 'Mister Wong!!';
-	$bookmark_list['obsocialbookmarkermisterwongcn'] = 'Mister Wong China!!';
-	$bookmark_list['obsocialbookmarkermisterwongde'] = 'Mister Wong Germany!!';
-	$bookmark_list['obsocialbookmarkermisterwongfr'] = 'Mister Wong France!!';
-	$bookmark_list['obsocialbookmarkermisterwongru'] = 'Mister Wong Russia!!';
-	$bookmark_list['obsocialbookmarkermisterwonges'] = 'Mister Wong Spain!!';
-	
-	$bookmark_list['obsocialbookmarkernetvouz'] = 'Netvouz';
-	$bookmark_list['obsocialbookmarkernewsvine'] = 'Newsvine';
-	$bookmark_list['obsocialbookmarkernetscape'] = 'Netscape!';	
-	
-	$bookmark_list['obsocialbookmarkerrawsugar'] = 'Rawsugar';
-	$bookmark_list['obsocialbookmarkerreddit'] = 'Reddit';
-	
-	$bookmark_list['obsocialbookmarkerspurl'] = 'Spurl';
-	$bookmark_list['obsocialbookmarkersegnalo'] = 'Segnalo';
-	$bookmark_list['obsocialbookmarkersphere'] = 'Sphere!';
-	$bookmark_list['obsocialbookmarkerstumble'] = 'StumbleUpon';
-	$bookmark_list['obsocialbookmarkerslashdot'] = 'Slashdot it';
-	$bookmark_list['obsocialbookmarkersimpy'] = 'Simpy';
-	$bookmark_list['obsocialbookmarkersquidoo'] = 'Squidoo';
-	$bookmark_list['obsocialbookmarkersmarking'] = 'Smarking!';
+		$bookmark_list['obsocialbookmarkerfacebook'] = 'Facebook';
+		$bookmark_list['obsocialbookmarkerfark'] = 'Fark';	
+		$bookmark_list['obsocialbookmarkerfurl'] = 'Furl';
+		$bookmark_list['obsocialbookmarkerfeedmelinks'] = 'Feed Me Links!';
+		$bookmark_list['obsocialbookmarkerfleck'] = 'Fleck!';
+		
+		$bookmark_list['obsocialbookmarkergoogle'] = 'Google';
+		
+		$bookmark_list['obsocialbookmarkerjeqq'] = 'Jeqq!';
 
-	$bookmark_list['obsocialbookmarkertechnorati'] = 'Technorati';
-	$bookmark_list['obsocialbookmarkertailrank'] = 'Tailrank!';
-	$bookmark_list['obsocialbookmarkerthisnext'] = 'ThisNext!';
-	$bookmark_list['obsocialbookmarkertaggly'] = 'Taggly!';
-	
-	$bookmark_list['obsocialbookmarkerwebride'] = 'Webride!';		
-	$bookmark_list['obsocialbookmarkerwink'] = 'Wink!';
-	$bookmark_list['obsocialbookmarkerwists'] = 'Wists!';
-	$bookmark_list['obsocialbookmarkerwirefan'] = 'Wirefan!';
-	$bookmark_list['obsocialbookmarkerwindowslive'] = 'Windows Live!';
-	$bookmark_list['obsocialbookmarkerwykop'] = 'Wykop!';
-	
-	$bookmark_list['obsocialbookmarkeryahoo'] = 'Yahoo';
+		$bookmark_list['obsocialbookmarkerlinkagogo'] = 'LinkaGoGo!';
 
+		$bookmark_list['obsocialbookmarkermisterwong'] = 'Mister Wong!!';
+		
+		$bookmark_list['obsocialbookmarkernetvouz'] = 'Netvouz';
+		$bookmark_list['obsocialbookmarkernewsvine'] = 'Newsvine';
+		$bookmark_list['obsocialbookmarkernetscape'] = 'Netscape!';	
+		
+		$bookmark_list['obsocialbookmarkerrawsugar'] = 'Rawsugar';
+		$bookmark_list['obsocialbookmarkerreddit'] = 'Reddit';
+		
+		$bookmark_list['obsocialbookmarkerspurl'] = 'Spurl';
+		$bookmark_list['obsocialbookmarkersegnalo'] = 'Segnalo';
+		$bookmark_list['obsocialbookmarkersphere'] = 'Sphere!';
+		$bookmark_list['obsocialbookmarkerstumble'] = 'StumbleUpon';
+		$bookmark_list['obsocialbookmarkerslashdot'] = 'Slashdot it';
+		$bookmark_list['obsocialbookmarkersimpy'] = 'Simpy';
+		$bookmark_list['obsocialbookmarkersquidoo'] = 'Squidoo';
+		$bookmark_list['obsocialbookmarkersmarking'] = 'Smarking!';
+
+		$bookmark_list['obsocialbookmarkertechnorati'] = 'Technorati';
+		$bookmark_list['obsocialbookmarkertailrank'] = 'Tailrank!';
+		$bookmark_list['obsocialbookmarkerthisnext'] = 'ThisNext!';
+		$bookmark_list['obsocialbookmarkertaggly'] = 'Taggly!';
+		
+		$bookmark_list['obsocialbookmarkerwebride'] = 'Webride!';		
+		$bookmark_list['obsocialbookmarkerwink'] = 'Wink!';
+		$bookmark_list['obsocialbookmarkerwists'] = 'Wists!';
+		$bookmark_list['obsocialbookmarkerwirefan'] = 'Wirefan!';
+		$bookmark_list['obsocialbookmarkerwindowslive'] = 'Windows Live!';
+
+		
+		$bookmark_list['obsocialbookmarkeryahoo'] = 'Yahoo';
+	}
+	
+	if ($country == 'us'){
+			$bookmark_list['obsocialbookmarkerdelicious'] = 'Del.icio.us';
+	}
+
+	if ($country == 'ch'){
+		$bookmark_list['obsocialbookmarkermisterwongcn'] = 'Mister Wong China!!';
+	}
+
+	if ($country == 'de'){
+	
+		$bookmark_list['obsocialbookmarkermisterwongde'] = 'Mister Wong Germany!!';
+	}
+	if ($country == 'fr'){
+		$bookmark_list['obsocialbookmarkermisterwongfr'] = 'Mister Wong France!!';
+	}
+
+	if ($country == 'ru'){
+		$bookmark_list['obsocialbookmarkermisterwongru'] = 'Mister Wong Russia!!';
+	}
+	
+	if ($country == 'es'){
+		$bookmark_list['obsocialbookmarkermisterwonges'] = 'Mister Wong Spain!!';
+	}
+
+	if ($country == 'pl'){
+		$bookmark_list['obsocialbookmarkerwykop'] = 'Wykop!';
+	}
+
+	if ($country == 'it'){
+		$bookmark_list['obsocialbookmarkerbookmark'] = 'Bookmark.it!';
+		$bookmark_list['obsocialbookmarkerdiggita'] = 'Diggita!';
+	}
+
+			
 	return $bookmark_list;
 }
 
@@ -125,13 +157,49 @@ function obsocialbookmarker_add_pages() {
 
 function print_obsocialbookmarker_options_form() {
 	$obsocialbookmarker_version = obsocialbookmarker_get_version();
-	$bookmark_list = array();
-	unset($bookmark_list);
-	$bookmark_list = obsocialbookmarker_bookmark_list();
+
 
 	$ok = false;	
+	
+	
+	$ob_menu = '';
+	$ob_submit_button = '';
+	$ob_other_option1 = '';
 
-	if ($_REQUEST['submit']){
+
+	if ($_REQUEST['ob_menu']){
+		$ob_menu = $_REQUEST['ob_menu'];
+	}
+	
+	
+	if ($_REQUEST['position']){
+		$ob_submit_button = 'position';
+	}
+
+
+	if ($_REQUEST['bookmark_filter']){
+		$ob_submit_button = 'bookmark_filter';
+		$ob_other_option1 = 'international';
+		if ($_REQUEST['ob_country']){
+			$ob_other_option1 = $_REQUEST['ob_country'];
+		}
+	}
+
+	if ($_REQUEST['bookmark']){
+		$ob_submit_button = 'bookmark';
+		$ob_other_option1 = 'international';
+		if ($_REQUEST['ob_country']){
+			$ob_other_option1 = $_REQUEST['ob_country'];
+		}
+	}
+	
+
+
+	if ($ob_submit_button == 'bookmark'){
+		$bookmark_list = array();
+		unset($bookmark_list);
+		$bookmark_list = obsocialbookmarker_bookmark_list($ob_other_option1);
+
 		foreach ($bookmark_list as $key => $data) {
 			if ($_REQUEST[$key]=="1"){
 				update_option($key,"1");
@@ -155,7 +223,7 @@ function print_obsocialbookmarker_options_form() {
 		}
 	}
 	
-	if ($_REQUEST['position']){
+	if ($ob_submit_button == 'position'){
 		if ($_REQUEST['obsocialbookmarker_content_b']=="1"){
 			update_option('obsocialbookmarker_content_b',"1");
 			$ok = true;
@@ -248,13 +316,13 @@ function print_obsocialbookmarker_options_form() {
 		<tr>
 			<td>
 				<form method="post"> 
-					<input type="hidden" name="obsocialbookmarker_option1" value="1"/>
+					<input type="hidden" name="ob_menu" value="1"/>
 					<input type="submit" name="obform" value="General Settings" />
 				</form>
 			</td>
 			<td>
 				<form method="post"> 
-					<input type="hidden" name="obsocialbookmarker_option1" value="2"/>
+					<input type="hidden" name="ob_menu" value="2"/>
 					<input type="submit" name="obform" value="Select Bookmarks" />
 				</form>
 			</td>
@@ -263,13 +331,17 @@ function print_obsocialbookmarker_options_form() {
 	</p>
 	</div>
 	<?php 
-	if ($_REQUEST['obsocialbookmarker_option1']=="1"){
-		print_obsocialbookmarker_global_pos_options_form();
-	}
-	
-	if ($_REQUEST['obsocialbookmarker_option1']=="2"){
-		print_obsocialbookmarker_global_bookmark_options_form();
-	}
+
+		if ($_REQUEST['ob_menu']=="1"){
+			print_obsocialbookmarker_global_pos_options_form();
+		}
+		
+		if ($_REQUEST['ob_menu'] == "2" || $ob_submit_button == 'bookmark_filter'){
+			if ($ob_submit_button == ''){
+				$ob_other_option1 = 'international';			
+			}
+			print_obsocialbookmarker_global_bookmark_options_form($ob_other_option1);
+		}
 	
 }
 
@@ -319,29 +391,80 @@ function print_obsocialbookmarker_global_pos_options_form() {
 	<?php
 }
 
+function ob_country_selected($ob_p_selected, $ob_p_current){
+	if ($ob_p_selected == $ob_p_current){
+		return 'selected="selected"';
+	}else{
+		return '';
+	}
+	return '';
+}
 
-function print_obsocialbookmarker_global_bookmark_options_form() {
+function print_obsocialbookmarker_global_bookmark_options_form($ob_p_country) {
 	$bookmark_list = array();
 	unset($bookmark_list);
-	$bookmark_list = obsocialbookmarker_bookmark_list();
+	$bookmark_list = obsocialbookmarker_bookmark_list($ob_p_country);
+	$col_no = 5;
 	?>
 		<div class="wrap">
+		<form method="post">
+		<table class="editform" width="100%" cellspacing="2" cellpadding="5">	
+			<tr valign="top">
+				<td>
+				<label for="Country"> <b>Country&nbsp;</b>
+				<select name="ob_country" id="ob_country">					
+					<option value="ch" <?php echo ob_country_selected($ob_p_country, 'ch') ?>>China</option>;
+					<option value="fr" <?php echo ob_country_selected($ob_p_country, 'fr') ?>>France</option>;
+					<option value="de" <?php echo ob_country_selected($ob_p_country, 'de') ?>>Germany</option>;
+					<option value="international" <?php echo ob_country_selected($ob_p_country, 'international') ?>>International</option>;
+					<option value="it" <?php echo ob_country_selected($ob_p_country, 'it') ?>>Itay</option>;
+					<option value="pl" <?php echo ob_country_selected($ob_p_country, 'pl') ?>>Poland</option>;
+					<option value="ru" <?php echo ob_country_selected($ob_p_country, 'ru') ?>>Russia</option>;
+					<option value="es" <?php echo ob_country_selected($ob_p_country, 'es') ?>>Spain</option>;					
+					<option value="us" <?php echo ob_country_selected($ob_p_country, 'us') ?>>USA</option>;
+				</select>
+				</label> 
+				<input type="hidden" name="ob_menu" value="2"/>
+				<input type="submit" name="bookmark_filter" value="Filter" />
+				</td>
+			</tr>
+		</table>
+		</form>
 		<h2><?php _e('Select Bookmarks to be included') ?></h2>
 		<form method="post">
-		<p class="submit"><input type="submit" name="submit" value="Submit" /></p>
+		<p class="submit"><input type="submit" name="bookmark" value="Submit" /></p>
+		<input type="hidden" name="ob_country" value="<?php echo $ob_p_country ?>" />
+		
 		<ul> <?php 
 		if 	(!empty($bookmark_list)){
+		?><table cellpadding="10"><?php
+		$i = 0;
 		foreach ($bookmark_list as $key => $data) {
+				if ($i == 5) {
+					$i = 0;
+				}
+				if ($i == 0 ){
+					echo "<tr>";
+				}
 			?>	
+
+				<td >
+
 				<li> 
 					<label for="<?php echo $key ?>"> 
 					<input name="<?php echo $key ?>" type="checkbox" id="<?php echo $key ?>" value="1" <?php checked('1', get_option($key)); ?>/> 
 					<?php echo $data ?>
 					</label> 
 				</li>
-
+				</td>
 				<?php
+				
+				$i = $i + 1;
+				if ($i == 5 ){
+					echo "</tr>";
+				}
 			}
+		?></table><?php
 		}
 		?>
 		</ul> 
@@ -767,10 +890,16 @@ function obsocialbookmarkerLinks()
 
 function set_obsocialbookmarker_options(){
 	$bookmark_list = array();
-	unset($bookmark_list);
-	$bookmark_list = obsocialbookmarker_bookmark_list();
-	foreach ($bookmark_list as $key => $data) {
-		add_option($key,'0',$key);
+	$country_list = array('international','ch','fr','de','it','pl','ru','es','us');
+
+	
+
+	foreach ($country_list as $country_key => $country_data) {
+		unset($bookmark_list);
+		$bookmark_list =  obsocialbookmarker_bookmark_list($country_data);
+		foreach ($bookmark_list as $key => $data) {
+			add_option($key,'0',$key);
+		}
 	}
 
 	$ob_option_list = array();
@@ -783,12 +912,17 @@ function set_obsocialbookmarker_options(){
 
 function unset_obsocialbookmarker_options(){
 	$bookmark_list = array();
-	unset($bookmark_list);
-	$bookmark_list = obsocialbookmarker_bookmark_list();
-	foreach ($bookmark_list as $key => $data) {
-		delete_option($key);
+	$country_list = array('international','ch','fr','de','it','pl','ru','es','us');
+
+	foreach ($country_list as $country_key => $country_data) {
+		unset($bookmark_list);
+		$bookmark_list = obsocialbookmarker_bookmark_list($country_data);
+		foreach ($bookmark_list as $key => $data) {
+			delete_option($key);
+		}
 	}
 
+	
 	$ob_option_list = array();
 	unset($ob_option_list);
 	$ob_option_list = obsocialbookmarker_option_list();
