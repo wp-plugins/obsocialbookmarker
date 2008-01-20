@@ -573,7 +573,7 @@ function print_obsocialbookmarker_global_bookmark_options_form($ob_p_country) {
 		}
 		?>
 		</ul> 
-		<p class="submit"><input type="submit" name="submit" value="Submit" /></p>
+		<p class="submit"><input type="submit" name="bookmark" value="Submit" /></p>
 		</form>
 		</div>
 	<?php
