@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck.
-Version: 5.1.7
+Version: 5.1.8
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function obsocialbookmarker_get_version() {
-	return '5.1.7';	
+	return '5.1.8';	
 }
 
 
@@ -37,8 +37,76 @@ function obsocialbookmarker_option_list() {
 	$ob_option_list['obsocialbookmarker_excerpt_b'] = '0';
 	$ob_option_list['obsocialbookmarker_excerpt_a'] = '0';
 	$ob_option_list['obsocialbookmarker_fadeimage'] = '0';
-
 	return $ob_option_list;
+}
+
+function obsocialbookmarker_exist_in_array($str, $array){
+    $str = strtolower($str);
+    foreach ($array as $key => $value) if (strtolower($value) == $str) return true;
+    return false;
+}
+
+
+function obsocialbookmarker_get_excpglstopt_list(){
+	$obsocialbookmarker_excpglstopt = get_option('obsocialbookmarker_excpglstopt');
+	$obsocialbookmarker_excpglstopt_a = array();
+	if 	(!empty($obsocialbookmarker_excpglstopt)){
+		$obsocialbookmarker_excpglstopt_a = explode(",", $obsocialbookmarker_excpglstopt);
+	}
+	return $obsocialbookmarker_excpglstopt_a;
+}
+
+function obsocialbookmarker_put_excpglstopt_list($new_page){
+	$obsocialbookmarker_excpglstopt = get_option('obsocialbookmarker_excpglstopt');
+	$obsocialbookmarker_excpglstopt_a = array();
+	if 	(!empty($obsocialbookmarker_excpglstopt)){
+		$obsocialbookmarker_excpglstopt_a = explode(",", $obsocialbookmarker_excpglstopt);
+	}
+	if (!empty($obsocialbookmarker_excpglstopt_a)){
+		$count = count($obsocialbookmarker_excpglstopt_a);
+	}else{
+		$count = 0;
+	}
+	$obsocialbookmarker_excpglstopt_a[$count] = $new_page;
+	$obsocialbookmarker_excpglstopt = implode(",", $obsocialbookmarker_excpglstopt_a);
+	update_option('obsocialbookmarker_excpglstopt',$obsocialbookmarker_excpglstopt);
+}
+
+function obsocialbookmarker_take_excpglstopt_list($minus_page){
+	$obsocialbookmarker_excpglstopt = get_option('obsocialbookmarker_excpglstopt');
+	$obsocialbookmarker_excpglstopt_a = array();
+	$obsocialbookmarker_excpglstopt_b = array();
+
+	if 	(!empty($obsocialbookmarker_excpglstopt)){
+		$obsocialbookmarker_excpglstopt_a = explode(",", $obsocialbookmarker_excpglstopt);
+	}
+	if (!empty($obsocialbookmarker_excpglstopt_a)){
+		foreach ($obsocialbookmarker_excpglstopt_a as $obsocialbookmarker_excpglstopt_s) {
+			if ($obsocialbookmarker_excpglstopt_s != $minus_page){
+				$obsocialbookmarker_excpglstopt_b[count($obsocialbookmarker_excpglstopt_b)] = $obsocialbookmarker_excpglstopt_s;
+			}
+		}
+	}
+	$obsocialbookmarker_excpglstopt = implode(",", $obsocialbookmarker_excpglstopt_b);
+	update_option('obsocialbookmarker_excpglstopt',$obsocialbookmarker_excpglstopt);
+}
+
+
+function obsocialbookmarker_exist_excpglstopt_list($page){
+	if (empty($page)){
+		return false;
+	}
+	$obsocialbookmarker_excpglstopt = get_option('obsocialbookmarker_excpglstopt');
+	$obsocialbookmarker_excpglstopt_a = array();
+	if 	(!empty($obsocialbookmarker_excpglstopt)){
+		$obsocialbookmarker_excpglstopt_a = explode(",", $obsocialbookmarker_excpglstopt);
+	}
+
+	if (obsocialbookmarker_exist_in_array($page, $obsocialbookmarker_excpglstopt_a)){
+		return true;
+	}
+
+	return false;
 }
 
 
@@ -193,6 +261,21 @@ function print_obsocialbookmarker_options_form() {
 		}
 	}
 	
+	if ($_REQUEST['excp_pge_in']){
+		$ob_submit_button = 'excp_pge_in';
+		$ob_other_option1 = '';
+		if ($_REQUEST['add_page']){
+			$ob_other_option1 = $_REQUEST['add_page'];
+		}
+	}
+
+	if ($_REQUEST['excp_pge_out']){
+		$ob_submit_button = 'excp_pge_out';
+		$ob_other_option1 = '';
+		if ($_REQUEST['minus_page']){
+			$ob_other_option1 = $_REQUEST['minus_page'];
+		}
+	}
 
 
 	if ($ob_submit_button == 'bookmark'){
@@ -275,6 +358,18 @@ function print_obsocialbookmarker_options_form() {
 		}
 	}
 
+	if ( $ob_menu == '3'){
+			if ( $ob_submit_button == 'excp_pge_in'){
+				obsocialbookmarker_put_excpglstopt_list($ob_other_option1);
+			}
+
+			if ( $ob_submit_button == 'excp_pge_out'){
+				obsocialbookmarker_take_excpglstopt_list($ob_other_option1);
+			}
+
+	}
+
+
 	if (ini_get('allow_url_fopen') == '1') {
 		if ($handle = fopen("http://svn.wp-plugins.org/obsocialbookmarker/trunk/obsocialbookmarker/obsocialbookmarker.info", "r")){
 			$obsocialbookmarker_new_version = 0;
@@ -326,6 +421,13 @@ function print_obsocialbookmarker_options_form() {
 					<input type="submit" name="obform" value="Select Bookmarks" />
 				</form>
 			</td>
+			<td>
+				<form method="post"> 
+					<input type="hidden" name="ob_menu" value="3"/>
+					<input type="submit" name="obform" value="Exception Pages" />
+				</form>
+			</td>
+			<td>
 		</tr>
 		</table>			
 	</p>
@@ -342,7 +444,10 @@ function print_obsocialbookmarker_options_form() {
 			}
 			print_obsocialbookmarker_global_bookmark_options_form($ob_other_option1);
 		}
-	
+		
+		if ($_REQUEST['ob_menu']=="3"){
+			print_obsocialbookmarker_exception_pages_options_form(); 
+		}
 }
 
 
@@ -471,6 +576,68 @@ function print_obsocialbookmarker_global_bookmark_options_form($ob_p_country) {
 		<p class="submit"><input type="submit" name="submit" value="Submit" /></p>
 		</form>
 		</div>
+	<?php
+}
+
+function print_obsocialbookmarker_exception_pages_options_form() {
+	$exc_pg_lst_opt = array();
+	unset($exc_pg_lst_opt);
+
+	?>
+		<div class="wrap">
+		<h2><?php _e('Exception Pages Listing') ?></h2>
+		
+			<table class="editform" width="100%" cellspacing="0" cellpadding="0">	
+				<tr valign="top">
+					
+					<form method="post">
+
+					<td>
+						<label for="add_page_lb"> 
+						Other Pages
+						<select name="add_page" id="add_page">
+					<?php
+						$obsocialbookmarker_excpglstopt = get_option('obsocialbookmarker_excpglstopt');
+						$pages = get_pages('exclude='.$obsocialbookmarker_excpglstopt);
+						foreach ($pages as $page) {
+							echo '\n\t<option value="'.$page->ID.'">'.get_the_title($page->ID).'</option>';
+						}
+					?>
+						
+					</select>
+					</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="hidden" name="ob_menu" value="3"/>					
+					<input type="submit" name="excp_pge_in" value=">>" />
+
+					</td>
+					</form>
+
+					<form method="post">
+					<td>
+						<input type="hidden" name="ob_menu" value="3"/>
+						<input type="submit" name="excp_pge_out" value="<<" />
+						<label for="minus_page_lb"> 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exception Pages
+						<select name="minus_page" id="minus_page">
+					<?php
+						$pages_list = obsocialbookmarker_get_excpglstopt_list();
+						foreach ($pages_list as $page) {
+							echo '\n\t<option value="'.$page.'">'.get_the_title($page).'</option>';
+						}
+					?>
+						
+					</select>
+					</label>
+					</td>
+					</form>
+
+				</tr>
+			</table>
+		</div>
+
+							
+	
 	<?php
 }
 
@@ -908,6 +1075,8 @@ function set_obsocialbookmarker_options(){
 	foreach ($ob_option_list as $key => $data) {
 		add_option($key,'0',$key);
 	}
+
+	add_option('obsocialbookmarker_excpglstopt','','obsocialbookmarker_excpglstopt');
 }
 
 function unset_obsocialbookmarker_options(){
@@ -930,11 +1099,14 @@ function unset_obsocialbookmarker_options(){
 		delete_option($key);
 	}
 
+	delete_option('obsocialbookmarker_excpglstopt');
+
 }
 
 
 function obsocialbookmarker_c($content)
 {
+	global $post;
 	$final_content = $content;
 
 	if (get_option('obsocialbookmarker_content_a')=='1')
@@ -944,6 +1116,11 @@ function obsocialbookmarker_c($content)
 		$final_content =  obsocialbookmarkerLinks()."\n".$final_content;
 
 	if(!is_feed()){
+		if (is_page()){
+			if (obsocialbookmarker_exist_excpglstopt_list($post->ID)){
+				return "$content\n";	
+			}
+		}
 		return $final_content."\n";
 	}else{
 		return "$content\n";
@@ -982,10 +1159,10 @@ if (function_exists('add_action')) {
 }
 
 if (function_exists('register_activation_hook')) {
-	register_activation_hook('obsocialbookmarker.php','set_obsocialbookmarker_options');
+	register_activation_hook(__FILE__,'set_obsocialbookmarker_options');
 }
 
 if (function_exists('register_deactivation_hook')) {
-	register_deactivation_hook('obsocialbookmarker.php', 'unset_obsocialbookmarker_options');
+	register_deactivation_hook(__FILE__, 'unset_obsocialbookmarker_options');
 }
 ?>
