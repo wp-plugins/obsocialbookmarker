@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck.
-Version: 5.1.8
+Version: 5.1.9
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function obsocialbookmarker_get_version() {
-	return '5.1.8';	
+	return '5.1.9';	
 }
 
 
@@ -147,7 +147,8 @@ function obsocialbookmarker_bookmark_list($country) {
 
 		$bookmark_list['obsocialbookmarkerlinkagogo'] = 'LinkaGoGo!';
 
-		$bookmark_list['obsocialbookmarkermisterwong'] = 'Mister Wong!!';
+		$bookmark_list['obsocialbookmarkermisterwong'] = 'Mister Wong!';
+		$bookmark_list['obsocialbookmarkermixx'] = 'Mixx!';
 		
 		$bookmark_list['obsocialbookmarkernetvouz'] = 'Netvouz';
 		$bookmark_list['obsocialbookmarkernewsvine'] = 'Newsvine';
@@ -185,23 +186,26 @@ function obsocialbookmarker_bookmark_list($country) {
 	}
 
 	if ($country == 'ch'){
-		$bookmark_list['obsocialbookmarkermisterwongcn'] = 'Mister Wong China!!';
+		$bookmark_list['obsocialbookmarkermisterwongcn'] = 'Mister Wong China!';
 	}
 
 	if ($country == 'de'){
-	
-		$bookmark_list['obsocialbookmarkermisterwongde'] = 'Mister Wong Germany!!';
+		$bookmark_list['obsocialbookmarkerlinkarena'] = 'Linkarena!';
+		$bookmark_list['obsocialbookmarkertagglede'] = 'Taggle!';
+		$bookmark_list['obsocialbookmarkermisterwongde'] = 'Mister Wong Germany!';
+		$bookmark_list['obsocialbookmarkermisteryigg'] = 'Yigg!';
+		
 	}
 	if ($country == 'fr'){
-		$bookmark_list['obsocialbookmarkermisterwongfr'] = 'Mister Wong France!!';
+		$bookmark_list['obsocialbookmarkermisterwongfr'] = 'Mister Wong France!';
 	}
 
 	if ($country == 'ru'){
-		$bookmark_list['obsocialbookmarkermisterwongru'] = 'Mister Wong Russia!!';
+		$bookmark_list['obsocialbookmarkermisterwongru'] = 'Mister Wong Russia!';
 	}
 	
 	if ($country == 'es'){
-		$bookmark_list['obsocialbookmarkermisterwonges'] = 'Mister Wong Spain!!';
+		$bookmark_list['obsocialbookmarkermisterwonges'] = 'Mister Wong Spain!';
 	}
 
 	if ($country == 'pl'){
@@ -798,42 +802,42 @@ function obsocialbookmarkerLinks()
 		,'misterwong' => array(
 			'title' => 'Mister Wong!'
 			, 'link' => 'http://www.mister-wong.com/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
-			, 'img' => $imgurl.'misterwong.png" width="16" height="16" alt="Mister Wong"'
+			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwong')
 		)
 		,'misterwongcn' => array(
 			'title' => 'Mister Wong China!'
 			, 'link' => 'http://www.mister-wong.cn/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
-			, 'img' => $imgurl.'misterwong.png" width="16" height="16" alt="Mister Wong China"'
+			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong China"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwongcn')
 		)
 		,'misterwongde' => array(
 			'title' => 'Mister Wong Germany!'
 			, 'link' => 'http://www.mister-wong.de/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
-			, 'img' => $imgurl.'misterwong.png" width="16" height="16" alt="Mister Wong Germany"'
+			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong Germany"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwongde')
 		)
 		,'misterwongfr' => array(
 			'title' => 'Mister Wong France!'
 			, 'link' => 'http://www.mister-wong.fr/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
-			, 'img' => $imgurl.'misterwong.png" width="16" height="16" alt="Mister Wong France"'
+			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong France"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwongfr')
 		)
 		,'misterwongru' => array(
 			'title' => 'Mister Wong Russia!'
 			, 'link' => 'http://www.mister-wong.ru/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
-			, 'img' => $imgurl.'misterwong.png" width="16" height="16" alt="Mister Wong Russia"'
+			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong Russia"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwongru')
 		)
 		,'misterwonges' => array(
 			'title' => 'Mister Wong Spain!'
 			, 'link' => 'http://www.mister-wong.es/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
-			, 'img' => $imgurl.'misterwong.png" width="16" height="16" alt="Mister Wong Spain"'
+			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong Spain"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwonges')
 		)
@@ -1027,8 +1031,35 @@ function obsocialbookmarkerLinks()
 				, 'img' => $imgurl.'additious.gif" width="16" height="16" alt="Additious"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkeradditious')
-			)			
-
+			)	
+		,'tagglede' => array(
+				'title' => 'Taggle'
+				, 'link' => 'http://taggle.de/addLinkDetails?mAddress='.$link.'&amp;title='.$title.'&amp;submitted=Weiter'
+				, 'img' => $imgurl.'taggle.gif" width="16" height="16" alt="Taggle"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkertagglede')
+			)											
+		,'linkarena' => array(
+				'title' => 'Linkarena'
+				, 'link' => 'http://www.linkarena.com/linkadd.php?linkName='.$title.'&amp;linkURL='.$link
+				, 'img' => $imgurl.'linkarena.gif" width="16" height="16" alt="Linkarena"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerlinkarena')
+			)	
+		,'yigg' => array(
+				'title' => 'Yigg'
+				, 'link' => 'http://yigg.de/neu?exturl='.$link
+				, 'img' => $imgurl.'yigg.gif" width="16" height="16" alt="Yigg"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkeryigg')
+			)	
+		,'mixx' => array(
+				'title' => 'Mixx'
+				, 'link' => 'http://www.mixx.com/submit?page_url='.$link
+				, 'img' => $imgurl.'mixx.png" width="16" height="16" alt="Mixx"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkermixx')
+			)						
 );
 
 	$bookmarker = array();
