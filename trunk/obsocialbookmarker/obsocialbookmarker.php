@@ -837,7 +837,7 @@ function obsocialbookmarkerLinks()
 				, 'visible' => get_option('obsocialbookmarkerbackflip')
 			)
 		,'obsocialbookmarkerspurl' => array(
-				'title' => 'Backflip'
+				'title' => 'Spurl'
 				, 'img' => $imgurl.'spurl.png" width="16" height="16" alt="Spurl"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerspurl')
