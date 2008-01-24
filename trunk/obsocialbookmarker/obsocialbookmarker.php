@@ -656,7 +656,7 @@ function obsocialbookmarkerLinks()
 	$link = urlencode(get_permalink());
 	$title = urlencode(the_title('', '', false));
 	$imgurl = '"'.get_settings('siteurl').'/wp-content/plugins/obsocialbookmarker/images/';
-	$plugin_url = '/wp-content/plugins/obsocialbookmarker/obsocialbookmarker_redirect.php';
+	$plugin_url = '/wp-content/plugins/obsocialbookmarker/include/obsocialbookmarker_redirect.php';
 	$social_sites = array(
 		'obsocialbookmarkerdelicious' => array(
 			'title' => 'Save to del.icio.us'
