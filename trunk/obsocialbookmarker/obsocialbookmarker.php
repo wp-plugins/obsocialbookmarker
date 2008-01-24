@@ -655,7 +655,7 @@ function obsocialbookmarkerLinks()
 	
 	$link = urlencode(get_permalink());
 	$title = urlencode(the_title('', '', false));
-	$imgurl = '"'.get_settings('siteurl').'/wp-content/plugins/obsocialbookmarker/images/';
+	$imgurl = '"'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/images/';
 	$plugin_url = '/wp-content/plugins/obsocialbookmarker/include/obsocialbookmarker_redirect.php';
 	$social_sites = array(
 		'obsocialbookmarkerdelicious' => array(
@@ -1026,9 +1026,9 @@ function obsocialbookmarkerLinks()
 	
 	foreach ($social_sites as $key => $data) {
 		if ($data['visible'] == '1'){
-			$obsocialbookmarker_link = $plugin_url.'?site='.$key.'&amp;link='.$link.'&amp;title='.$title.'';
+			$obsocialbookmarker_link = get_option('siteurl').$plugin_url.'?site='.$key.'&amp;link='.$link.'&amp;title='.$title.'';
 			if ($key == 'obsocialbookmarkerbloglines'){
-				$obsocialbookmarker_link = $plugin_url.'?site='.$key.'&amp;link='.urldecode($link).'&amp;title='.$title.'';
+				$obsocialbookmarker_link =  get_option('siteurl').$plugin_url.'?site='.$key.'&amp;link='.urldecode($link).'&amp;title='.$title.'';
 			}
 			$bookmarker[$key] = '<a href="'.$obsocialbookmarker_link.'" target="_blank"'.' title="'.$data['title'].'"> <img '.$l_fade.' src='.$data['img'].'/></a>';
 		}
