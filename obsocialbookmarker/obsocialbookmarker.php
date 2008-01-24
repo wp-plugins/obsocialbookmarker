@@ -3,8 +3,8 @@
 /*
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
-Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck.
-Version: 5.1.9
+Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg.
+Version: 5.2.0
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function obsocialbookmarker_get_version() {
-	return '5.1.9';	
+	return '5.2.0';	
 }
 
 
@@ -142,6 +142,8 @@ function obsocialbookmarker_bookmark_list($country) {
 		$bookmark_list['obsocialbookmarkerfleck'] = 'Fleck!';
 		
 		$bookmark_list['obsocialbookmarkergoogle'] = 'Google';
+
+		$bookmark_list['obsocialbookmarkerhugg'] = 'Hugg';
 		
 		$bookmark_list['obsocialbookmarkerjeqq'] = 'Jeqq!';
 
@@ -563,6 +565,7 @@ function print_obsocialbookmarker_global_bookmark_options_form($ob_p_country) {
 					<label for="<?php echo $key ?>"> 
 					<input name="<?php echo $key ?>" type="checkbox" id="<?php echo $key ?>" value="1" <?php checked('1', get_option($key)); ?>/> 
 					<?php echo $data ?>
+					(&nbsp;<?php $obsocialbookmarker_hits = get_option($key.'_stat'); if (empty($obsocialbookmarker_hits)) echo '0'; else echo $obsocialbookmarker_hits; ?> - Clicks&nbsp;)
 					</label> 
 				</li>
 				</td>
@@ -653,413 +656,363 @@ function obsocialbookmarkerLinks()
 	$link = urlencode(get_permalink());
 	$title = urlencode(the_title('', '', false));
 	$imgurl = '"'.get_settings('siteurl').'/wp-content/plugins/obsocialbookmarker/images/';
-
+	$plugin_url = '/wp-content/plugins/obsocialbookmarker/obsocialbookmarker_redirect.php';
 	$social_sites = array(
-		'delicious' => array(
+		'obsocialbookmarkerdelicious' => array(
 			'title' => 'Save to del.icio.us'
-			, 'link' => 'http://del.icio.us/post?url='.$link.'&amp;title='.$title.''
 			, 'img' => $imgurl.'delicious.png" width="16" height="16" alt="del.icio.us"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerdelicious')
 
 		)
-		,'reddit' => array(
+		,'obsocialbookmarkerreddit' => array(
 			'title' => 'Save to Reddit'
-			, 'link' => 'http://reddit.com/submit?url='.$link.'&amp;title='.$title.''
 			, 'img' => $imgurl.'reddit.gif" width="16" height="16" alt="Reddit"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerreddit')
 		)
-		,'slashdot' => array(
+		,'obsocialbookmarkerslashdot' => array(
 			'title' => 'Slashdot It!'
-			, 'link' => 'http://slashdot.org/bookmark.pl?url='.$link.'&amp;title='.$title.''
 			, 'img' => $imgurl.'slashdot.png" width="16" height="16" alt="Slashdot"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerslashdot')
 		)
-		,'digg' => array(
+		,'obsocialbookmarkerdigg' => array(
 			'title' => 'Digg This Post!'
-			, 'link' => 'http://digg.com/submit?phase=2&amp;url='.$link.'&amp;title='.$title.''
 			, 'img' => $imgurl.'digg.png" width="16" height="16" alt="Digg"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerdigg')
 		)
-		,'facebook' => array(
+		,'obsocialbookmarkerfacebook' => array(
 			'title' => 'Share on Facebook!'
-			, 'link' => 'http://www.facebook.com/share.php?u='.$link.''
 			, 'img' => $imgurl.'facebook.gif" width="16" height="16" alt="Facebook"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerfacebook')
 		)
-		,'technorati' => array(
+		,'obsocialbookmarkertechnorati' => array(
 			'title' => 'Add to my Technorati Favorites!'
-			, 'link' => 'http://technorati.com/faves?add='.$link.''
 			, 'img' => $imgurl.'technorati.png" width="16" height="16" alt="Technorati"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkertechnorati')
 		)
-		,'google' => array(
+		,'obsocialbookmarkergoogle' => array(
 			'title' => 'Add to my Google Bookmarks!'
-			, 'link' => 'http://www.google.com/bookmarks/mark?op=edit&amp;output=popup&amp;bkmk='.$link.'&amp;title='.$title.''
 			, 'img' => $imgurl.'goog.png" width="16" height="16" alt="Google"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkergoogle')
 		)
-		,'stumbleupon' => array(
+		,'obsocialbookmarkerstumbleupon' => array(
 			'title' => 'Stumble it!'
-			, 'link' => 'http://www.stumbleupon.com/submit?url='.$link.'&amp;title='.$title.''
 			, 'img' => $imgurl.'su.png" width="16" height="16" alt="StumbleUpon"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerstumble')
 		)
 
-		,'windows_live' => array(
+		,'obsocialbookmarkerwindowslive' => array(
 			'title' => 'Add to Windows Live!'
-			, 'link' => 'https://favorites.live.com/quickadd.aspx?marklet=1&amp;mkt=en-us&amp;url='.$link.'&amp;title='.$title.'&amp;top=1'
 			, 'img' => $imgurl.'live.gif" width="16" height="16" alt="Windows Live"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerwindowslive')
 		)
-		,'tailrank' => array(
+		,'obsocialbookmarkertailrank' => array(
 			'title' => 'Add to Tailrank!'
-			, 'link' => 'http://tailrank.com/share/?link_href='.$link.'&amp;title='.$title
 			, 'img' => $imgurl.'tailrank.png" width="16" height="16" alt="Tailrank"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkertailrank')
 		)
 
-		,'furl' => array(
+		,'obsocialbookmarkerfurl' => array(
 			'title' => 'Add to Furl'
-			, 'link' => 'http://furl.net/storeIt.jsp?u='.$link.'&amp;t='.$title
 			, 'img' => $imgurl.'furl.gif" width="16" height="16" alt="Furl"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerfurl')
 		)
 
-		,'netscape' => array(
+		,'obsocialbookmarkernetscape' => array(
 			'title' => 'Add to Netscape'
-			, 'link' => ' http://www.netscape.com/submit/?U='.$link.'&amp;T='.$title
 			, 'img' => '"http://www.netscape.com/favicon.ico" width="16" height="16" alt="Netscape"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkernetscape')
 		)
-		,'yahoo' => array(
+		,'obsocialbookmarkeryahoo' => array(
 			'title' => 'Add to Yahoo!'
-			, 'link' => 'http://myweb2.search.yahoo.com/myresults/bookmarklet?u='.$link.'&amp;t='.$title
 			, 'img' => $imgurl.'yahoo-myweb.png" width="16" height="16" alt="Yahoo"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkeryahoo')
 		)
-		,'blinklist' => array(
+		,'obsocialbookmarkerblinklist' => array(
 			'title' => 'Add to BlinkList!'
-			, 'link' => 'http://blinklist.com/index.php?Action=Blink/addblink.php&amp;Url='.$link.'&amp;Title='.$title
 			, 'img' => $imgurl.'blinklist.png" width="16" height="16" alt="BlinkList"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerblinklist')
 		)
-		,'feedmelinks' => array(
+		,'obsocialbookmarkerfeedmelinks' => array(
 			'title' => 'Add to Feed Me Links!'
-			, 'link' => 'http://feedmelinks.com/categorize?from=toolbar&amp;op=submit&amp;name='.$title.'&amp;url='.$link.'&amp;version=0.7'
 			, 'img' => $imgurl.'feedmelinks.png" width="16" height="16" alt="Feed Me Links"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerfeedmelinks')
 		)
-		,'comments' => array(
+		,'obsocialbookmarkercomments' => array(
 			'title' => 'Add to co.mments!'
-			, 'link' => 'http://co.mments.com/track?url='.$link.'&amp;title='.$title
 			, 'img' => '"http://co.mments.com/favicon.ico" width="16" height="16" alt="co.mments"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkercomments')
 		)
-		,'bloglines' => array(
+		,'obsocialbookmarkerbloglines' => array(
 			'title' => 'Add to Bloglines!'
-			, 'link' => 'http://www.bloglines.com/sub/'.urldecode($link)
 			, 'img' => $imgurl.'bloglines.jpg" width="16" height="16" alt="Bloglines"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerbloglines')
 		)
-		,'bookmark' => array(
+		,'obsocialbookmarkerbookmark' => array(
 			'title' => 'Bookmark.it!'
-			, 'link' => 'http://www.bookmark.it/bookmark.php?url='.$link
 			, 'img' => $imgurl.'bookmarkit.gif" width="16" height="16" alt="Bookmark.it"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerbookmark')
 		)
-		,'ask' => array(
+		,'obsocialbookmarkerask' => array(
 			'title' => 'Ask!'
-			, 'link' => 'http://mystuff.ask.com/mysearch/QuickWebSave?v=1.2&amp;t=webpages&amp;title='.$title.'%21&amp;url='.$link
 			, 'img' => $imgurl.'ask.png" width="16" height="16" alt="Ask"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerask')
 		)
-		,'diggita' => array(
+		,'obsocialbookmarkerdiggita' => array(
 			'title' => 'Diggita!'
-			, 'link' => 'http://www.diggita.it/submit.php?title='.$title.'%21&amp;url='.$link
 			, 'img' => $imgurl.'diggitait.gif" width="16" height="16" alt="Diggita"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkerdiggita')
 		)
-		,'misterwong' => array(
+		,'obsocialbookmarkermisterwong' => array(
 			'title' => 'Mister Wong!'
-			, 'link' => 'http://www.mister-wong.com/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
 			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwong')
 		)
-		,'misterwongcn' => array(
+		,'obsocialbookmarkermisterwongcn' => array(
 			'title' => 'Mister Wong China!'
-			, 'link' => 'http://www.mister-wong.cn/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
 			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong China"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwongcn')
 		)
-		,'misterwongde' => array(
+		,'obsocialbookmarkermisterwongde' => array(
 			'title' => 'Mister Wong Germany!'
-			, 'link' => 'http://www.mister-wong.de/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
 			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong Germany"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwongde')
 		)
-		,'misterwongfr' => array(
+		,'obsocialbookmarkermisterwongfr' => array(
 			'title' => 'Mister Wong France!'
-			, 'link' => 'http://www.mister-wong.fr/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
 			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong France"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwongfr')
 		)
-		,'misterwongru' => array(
+		,'obsocialbookmarkermisterwongru' => array(
 			'title' => 'Mister Wong Russia!'
-			, 'link' => 'http://www.mister-wong.ru/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
 			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong Russia"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwongru')
 		)
-		,'misterwonges' => array(
+		,'obsocialbookmarkermisterwonges' => array(
 			'title' => 'Mister Wong Spain!'
-			, 'link' => 'http://www.mister-wong.es/index.php?action=addurl&amp;bm_url='.$link."&amp;bm_description=".$title 
 			, 'img' => $imgurl.'misterwong.gif" width="16" height="16" alt="Mister Wong Spain"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwonges')
 		)
-		,'newsvine' => array(
+		,'obsocialbookmarkernewsvine' => array(
 			'title' => 'Newsvine'
-			, 'link' => 'http://www.newsvine.com/_tools/seed&amp;save?u='.$link."&amp;h=".$title 
 			, 'img' => $imgurl.'newsvine.png" width="16" height="16" alt="Newsvine"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkernewsvine')
 		)
-		,'simpy' => array(
+		,'obsocialbookmarkersimpy' => array(
 				'title' => 'Simpy'
-				, 'link' => 'http://www.simpy.com/simpy/LinkAdd.do?href='.$link."&amp;title=".$title 
 				, 'img' => $imgurl.'simpy.png" width="16" height="16" alt="Simpy"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkersimpy')
 			)
-		,'backflip' => array(
+		,'obsocialbookmarkerbackflip' => array(
 				'title' => 'Backflip'
-				, 'link' => 'http://www.backflip.com/add_page_pop.ihtml?url='.$link."&amp;title=".$title 
 				, 'img' => $imgurl.'backflip.png" width="16" height="16" alt="Backflip"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerbackflip')
 			)
-		,'spurl' => array(
+		,'obsocialbookmarkerspurl' => array(
 				'title' => 'Backflip'
-				, 'link' => 'http://www.spurl.net/spurl.php? url='.$link."&amp;title=".$title 
 				, 'img' => $imgurl.'spurl.png" width="16" height="16" alt="Spurl"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerspurl')
 			)
-		,'netvouz' => array(
+		,'obsocialbookmarkernetvouz' => array(
 				'title' => 'Netvouz'
-				, 'link' => 'http://www.netvouz.com/action/submitBookmark?url='.$link."&amp;title=".$title."&amp;popup=no"
 				, 'img' => '"http://www.netvouz.com/web/images/netvouz16.gif" width="16" height="16" alt="Netvouz"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkernetvouz')
 			)
-		,'diigo' => array(
+		,'obsocialbookmarkerdiigo' => array(
 				'title' => 'Diigo'
-				, 'link' => 'http://www.diigo.com/post?url='.$link."&amp;title=".$title
 				, 'img' => '"http://www.diigo.com/images/ii_blue.gif" width="16" height="16" alt="Diigo"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerdiigo')
 			)
 
-		,'segnalo' => array(
+		,'obsocialbookmarkersegnalo' => array(
 				'title' => 'Segnalo'
-				, 'link' => 'http://segnalo.com/post.html.php?url='.$link."&amp;title=".$title
 				, 'img' => $imgurl.'segnalo.gif" width="16" height="16" alt="Segnalo"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkersegnalo')
 			)
-		,'dropjack' => array(
+		,'obsocialbookmarkerdropjack' => array(
 				'title' => 'Dropjack'
-				, 'link' => 'http://www.dropjack.com/submit.php?url='.$link
 				, 'img' => $imgurl.'dropjack.gif" width="16" height="16" alt="Dropjack"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerdropjack')
 			)
-		,'wink' => array(
+		,'obsocialbookmarkerwink' => array(
 				'title' => 'Wink'
-				, 'link' => 'http://wink.com/_/tag?url='.$link."&amp;doctitle=".$title
 				, 'img' => $imgurl.'wink.png" width="16" height="16" alt="Wink"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerwink')
 			)
-		,'linkagogo' => array(
+		,'obsocialbookmarkerlinkagogo' => array(
 				'title' => 'LinkaGoGo'
-				, 'link' => 'http://www.linkagogo.com/go/AddNoPopup?url='.$link."&amp;title=".$title
 				, 'img' => $imgurl.'linkagogo.png" width="16" height="16" alt="LinkaGoGo"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerlinkagogo')
 			)
-		,'rawsugar' => array(
+		,'obsocialbookmarkerrawsugar' => array(
 				'title' => 'Rawsugar'
-				, 'link' => 'http://www.rawsugar.com/tagger/?turl='.$link."&amp;tttl=".$title."&amp;editorInitialized=1"
 				, 'img' => $imgurl.'rawsugar.png" width="16" height="16" alt="Rawsugar"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerrawsugar')
 			)
-		,'squidoo' => array(
+		,'obsocialbookmarkersquidoo' => array(
 				'title' => 'Squidoo'
-				, 'link' => 'http://www.squidoo.com/lensmaster/bookmark?'.$link
 				, 'img' => '"http://www.squidoo.com/favicon.ico" width="16" height="16" alt="Squidoo"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkersquidoo')
 			)
-		,'fark' => array(
+		,'obsocialbookmarkerfark' => array(
 				'title' => 'Fark'
-				, 'link' => 'http://cgi.fark.com/cgi/fark/submit.pl?new_url='.$link."&amp;new_comment=".$title."&amp;linktype="
 				, 'img' => $imgurl.'fark.png" width="16" height="16" alt="Fark"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerfark')
 			)
-		,'smarking' => array(
+		,'obsocialbookmarkersmarking' => array(
 				'title' => 'Smarking'
-				, 'link' => 'http://smarking.com/editbookmark/?url='.$link
 				, 'img' => $imgurl.'smarking.gif" width="16" height="16" alt="Smarking"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkersmarking')
 			)
-		,'connotea' => array(
+		,'obsocialbookmarkerconnotea' => array(
 				'title' => 'Connotea'
-				, 'link' => 'http://www.connotea.org/addpopup?continue=confirm&amp;uri='.$link.'&amp;title='.$title
 				, 'img' => $imgurl.'connotea.gif" width="16" height="16" alt="Connotea"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerconnotea')
 			)
-		,'wists' => array(
+		,'obsocialbookmarkerwists' => array(
 				'title' => 'Wists'
-				, 'link' => 'http://wists.com/r.php?c=&amp;r='.$link.'&amp;tot;e='.$title
 				, 'img' => $imgurl.'wists.gif" width="16" height="16" alt="Wists"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerwists')
 			)
-		,'blinkbits' => array(
+		,'obsocialbookmarkerblinkbits' => array(
 				'title' => 'Blinkbits'
-				, 'link' => ' http://www.blinkbits.com/bookmarklets/save.php?v=1&amp;source_url='.$link
 				, 'img' => $imgurl.'blinkbits.gif" width="16" height="16" alt="Blinkbits"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerblinkbits')
 			)
-		,'blogmarks' => array(
+		,'obsocialbookmarkerblogmarks' => array(
 				'title' => 'Blogmarks'
-				, 'link' => 'http://blogmarks.net/my/new.php?mini=1&amp;simple=1&amp;url='.$link.'&amp;title='.$title
 				, 'img' => $imgurl.'blogmarks.gif" width="16" height="16" alt="Blogmarks"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerblogmarks')
 			)
-		,'jeqq' => array(
+		,'obsocialbookmarkerjeqq' => array(
 				'title' => 'Jeqq'
-				, 'link' => 'http://www.jeqq.com/submit.php?url='.$link.'&amp;title='.$title
 				, 'img' => $imgurl.'jeqq.gif" width="16" height="16" alt="Jeqq"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerjeqq')
 			)					
-		,'wykop' => array(
+		,'obsocialbookmarkerwykop' => array(
 				'title' => 'Wykop'
-				, 'link' => 'http://www.wykop.pl/dodaj?url='.$link
 				, 'img' => $imgurl.'wykop.png" width="16" height="16" alt="Wykop"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerwykop')
 			)		
-		,'webride' => array(
+		,'obsocialbookmarkerwebride' => array(
 				'title' => 'Webride'
-				, 'link' => 'http://webride.org/discuss/split.php?uri='.$link.'&amp;title='.$title
 				, 'img' => $imgurl.'webride.png" width="16" height="16" alt="Webride"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerwebride')
 			)		
-		,'thisnext' => array(
+		,'obsocialbookmarkerthisnext' => array(
 				'title' => 'ThisNext'
-				, 'link' => 'http://www.thisnext.com/pick/new/submit/sociable/?url='.$link.'&amp;name='.$title
 				, 'img' => $imgurl.'thisnext.png" width="16" height="16" alt="ThisNext"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerthisnext')
 			)		
-		,'wirefan' => array(
+		,'obsocialbookmarkerwirefan' => array(
 				'title' => 'Wirefan'
-				, 'link' => 'http://www.wirefan.com/grpost.php?u='.$link.'&amp;title='.$title
 				, 'img' => $imgurl.'wirefan.gif" width="16" height="16" alt="Wirefan"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerwirefan')
 			)	
 					
-		,'taggly' => array(
+		,'obsocialbookmarkertaggly' => array(
 				'title' => 'Taggly'
-				, 'link' => 'http://www.taggly.com/bookmarks/?action=add&amp;address= '.$link.'&amp;title='.$title
 				, 'img' => $imgurl.'taggly.png" width="16" height="16" alt="Taggly"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkertaggly')
 			)
-		,'sphere' => array(
+		,'obsocialbookmarkersphere' => array(
 				'title' => 'Sphere'
-				, 'link' => 'http://www.sphere.com/search?q=sphereit:'.$link.'&amp;title='.$title
 				, 'img' => $imgurl.'sphere.png" width="16" height="16" alt="Sphere"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkersphere')
 			)	
-		,'fleck' => array(
+		,'obsocialbookmarkerfleck' => array(
 				'title' => 'Fleck'
-				, 'link' => 'http://extension.fleck.com/?v=b.0.804&amp;url='.$link
 				, 'img' => $imgurl.'fleck.gif" width="16" height="16" alt="Fleck"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerfleck')
 			)			
-		,'additious' => array(
+		,'obsocialbookmarkeradditious' => array(
 				'title' => 'Additious'
-				, 'link' => 'http://www.additious.com/?url='.$link.'&amp;title='.$title
 				, 'img' => $imgurl.'additious.gif" width="16" height="16" alt="Additious"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkeradditious')
 			)	
-		,'tagglede' => array(
+		,'obsocialbookmarkertagglede' => array(
 				'title' => 'Taggle'
-				, 'link' => 'http://taggle.de/addLinkDetails?mAddress='.$link.'&amp;title='.$title.'&amp;submitted=Weiter'
 				, 'img' => $imgurl.'taggle.gif" width="16" height="16" alt="Taggle"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkertagglede')
 			)											
-		,'linkarena' => array(
+		,'obsocialbookmarkerlinkarena' => array(
 				'title' => 'Linkarena'
-				, 'link' => 'http://www.linkarena.com/linkadd.php?linkName='.$title.'&amp;linkURL='.$link
 				, 'img' => $imgurl.'linkarena.gif" width="16" height="16" alt="Linkarena"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerlinkarena')
 			)	
-		,'yigg' => array(
+		,'obsocialbookmarkeryigg' => array(
 				'title' => 'Yigg'
-				, 'link' => 'http://yigg.de/neu?exturl='.$link
 				, 'img' => $imgurl.'yigg.gif" width="16" height="16" alt="Yigg"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkeryigg')
 			)	
-		,'mixx' => array(
+		,'obsocialbookmarkermixx' => array(
 				'title' => 'Mixx'
-				, 'link' => 'http://www.mixx.com/submit?page_url='.$link
 				, 'img' => $imgurl.'mixx.png" width="16" height="16" alt="Mixx"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkermixx')
 			)						
+		,'obsocialbookmarkerhugg' => array(
+				'title' => 'Hugg'
+				, 'img' => $imgurl.'hugg.gif" width="16" height="16" alt="Hugg"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerhugg')
+			)						
+	
 );
 
 	$bookmarker = array();
@@ -1070,10 +1023,14 @@ function obsocialbookmarkerLinks()
 	if (get_option('obsocialbookmarker_fadeimage') == '1'){
 		$l_fade = 'style="-moz-opacity:0.5;filter:alpha(opacity=50);" onmouseover="this.style.MozOpacity=1; this.filters.alpha.opacity=100" onmouseout="this.style.MozOpacity=0.5; this.filters.alpha.opacity=50"';
 	}
-
+	
 	foreach ($social_sites as $key => $data) {
 		if ($data['visible'] == '1'){
-			$bookmarker[$key] = '<a href="'.$data['link'].'" target="_blank"'.' title="'.$data['title'].'"> <img '.$l_fade.' src='.$data['img'].'/></a>';
+			$obsocialbookmarker_link = $plugin_url.'?site='.$key.'&amp;link='.$link.'&amp;title='.$title.'';
+			if ($key == 'obsocialbookmarkerbloglines'){
+				$obsocialbookmarker_link = $plugin_url.'?site='.$key.'&amp;link='.urldecode($link).'&amp;title='.$title.'';
+			}
+			$bookmarker[$key] = '<a href="'.$obsocialbookmarker_link.'" target="_blank"'.' title="'.$data['title'].'"> <img '.$l_fade.' src='.$data['img'].'/></a>';
 		}
 	}
 	
@@ -1087,26 +1044,6 @@ function obsocialbookmarkerLinks()
 }
 
 function set_obsocialbookmarker_options(){
-	$bookmark_list = array();
-	$country_list = array('international','ch','fr','de','it','pl','ru','es','us');
-
-	
-
-	foreach ($country_list as $country_key => $country_data) {
-		unset($bookmark_list);
-		$bookmark_list =  obsocialbookmarker_bookmark_list($country_data);
-		foreach ($bookmark_list as $key => $data) {
-			add_option($key,'0',$key);
-		}
-	}
-
-	$ob_option_list = array();
-	unset($ob_option_list);
-	$ob_option_list = obsocialbookmarker_option_list();
-	foreach ($ob_option_list as $key => $data) {
-		add_option($key,'0',$key);
-	}
-
 	add_option('obsocialbookmarker_excpglstopt','','obsocialbookmarker_excpglstopt');
 }
 
@@ -1119,10 +1056,10 @@ function unset_obsocialbookmarker_options(){
 		$bookmark_list = obsocialbookmarker_bookmark_list($country_data);
 		foreach ($bookmark_list as $key => $data) {
 			delete_option($key);
+			delete_option($key.'_stat');					
 		}
 	}
 
-	
 	$ob_option_list = array();
 	unset($ob_option_list);
 	$ob_option_list = obsocialbookmarker_option_list();

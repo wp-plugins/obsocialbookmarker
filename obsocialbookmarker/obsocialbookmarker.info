@@ -1,2 +1,2 @@
-Version:5.1.9
-Msg: New bookmark tagglede, linkarena, yigg and mixx added. New icon for mister-wong added.Note - Wordpress subversion is updated now.
+Version:5.2.0
+Msg: Record clicks per bookmark so one can monitor them on the options page and determine which buttons are worth keeping or not. Added new bookmark Hugg.Note - Wordpress subversion is not updated yet.
