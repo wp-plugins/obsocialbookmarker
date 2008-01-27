@@ -195,7 +195,7 @@ function obsocialbookmarker_bookmark_list($country) {
 		$bookmark_list['obsocialbookmarkerlinkarena'] = 'Linkarena!';
 		$bookmark_list['obsocialbookmarkertagglede'] = 'Taggle!';
 		$bookmark_list['obsocialbookmarkermisterwongde'] = 'Mister Wong Germany!';
-		$bookmark_list['obsocialbookmarkermisteryigg'] = 'Yigg!';
+		$bookmark_list['obsocialbookmarkeryigg'] = 'Yigg!';
 		
 	}
 	if ($country == 'fr'){
