@@ -98,7 +98,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 		,'obsocialbookmarkeryigg' => 'http://yigg.de/neu?exturl='.$link
 		,'obsocialbookmarkermixx' => 'http://www.mixx.com/submit?page_url='.$link
 		,'obsocialbookmarkerhugg' => 'http://www.hugg.com/node/add/storylink?edit[title]='.$title.'&edit[url]='.$link
+		,'obsocialbookmarkerdotnetkicks' => 'http://www.dotnetkicks.com/kick/?url='.$link.'&title='.$title
+		,'obsocialbookmarkerblogmemes' => 'http://www.blogmemes.net/post.php?url='.$link.'&title='. $title
+		,'obsocialbookmarkerbluedot' => 'http://bluedot.us/Authoring.aspx?u='.$link.'&t='.$title
 	);
+
+
 
 	$clicked = get_option($site.'_stat');
 	if (empty($clicked)){

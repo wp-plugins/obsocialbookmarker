@@ -3,8 +3,8 @@
 /*
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
-Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg.
-Version: 5.2.1
+Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot
+Version: 5.2.2
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function obsocialbookmarker_get_version() {
-	return '5.2.1';	
+	return '5.2.2';	
 }
 
 
@@ -181,10 +181,16 @@ function obsocialbookmarker_bookmark_list($country) {
 
 		
 		$bookmark_list['obsocialbookmarkeryahoo'] = 'Yahoo';
+
+
+		$bookmark_list['obsocialbookmarkerblogmemes'] = 'Blogmemes';
+		$bookmark_list['obsocialbookmarkerdotnetkicks'] = 'DotNetKicks';
+
 	}
 	
 	if ($country == 'us'){
 			$bookmark_list['obsocialbookmarkerdelicious'] = 'Del.icio.us';
+			$bookmark_list['obsocialbookmarkerbluedot'] = 'Blue Dot';
 	}
 
 	if ($country == 'ch'){
@@ -195,7 +201,7 @@ function obsocialbookmarker_bookmark_list($country) {
 		$bookmark_list['obsocialbookmarkerlinkarena'] = 'Linkarena!';
 		$bookmark_list['obsocialbookmarkertagglede'] = 'Taggle!';
 		$bookmark_list['obsocialbookmarkermisterwongde'] = 'Mister Wong Germany!';
-		$bookmark_list['obsocialbookmarkeryigg'] = 'Yigg!';
+		$bookmark_list['obsocialbookmarkermisteryigg'] = 'Yigg!';
 		
 	}
 	if ($country == 'fr'){
@@ -1012,8 +1018,28 @@ function obsocialbookmarkerLinks()
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerhugg')
 			)						
+		,'obsocialbookmarkerbluedot' => array(
+				'title' => 'Blue Dot'
+				, 'img' => $imgurl.'bluedot.gif" width="16" height="16" alt="Blue Dot"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerbluedot')
+			)						
+		,'obsocialbookmarkerblogmemes' => array(
+				'title' => 'Blogmemes'
+				, 'img' => $imgurl.'blogmemes.gif" width="16" height="16" alt="Blogmemes"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerblogmemes')
+			)						
+		,'obsocialbookmarkerdotnetkicks' => array(
+				'title' => 'DotNetKicks'
+				, 'img' => $imgurl.'dotnetkicks.gif" width="16" height="16" alt="DotNetKicks"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerdotnetkicks')
+			)						
 	
 );
+
+
 
 	$bookmarker = array();
 	unset($bookmarker);
