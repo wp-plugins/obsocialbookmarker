@@ -3,8 +3,8 @@
 /*
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
-Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot
-Version: 5.2.2
+Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot, dzone, friendsite, rojo.
+Version: 5.2.3
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function obsocialbookmarker_get_version() {
-	return '5.2.2';	
+	return '5.2.3';	
 }
 
 
@@ -185,6 +185,10 @@ function obsocialbookmarker_bookmark_list($country) {
 
 		$bookmark_list['obsocialbookmarkerblogmemes'] = 'Blogmemes';
 		$bookmark_list['obsocialbookmarkerdotnetkicks'] = 'DotNetKicks';
+
+		$bookmark_list['obsocialbookmarkerdzone'] = 'DZone';
+		$bookmark_list['obsocialbookmarkerfriendsite'] = 'FriendSite';
+		$bookmark_list['obsocialbookmarkerrojo'] = 'Rojo';
 
 	}
 	
@@ -1036,10 +1040,26 @@ function obsocialbookmarkerLinks()
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerdotnetkicks')
 			)						
+		,'obsocialbookmarkerdzone' => array(
+				'title' => 'DZone'
+				, 'img' => $imgurl.'dzone.gif" width="16" height="16" alt="DZone"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerdzone')
+			)						
+		,'obsocialbookmarkerfriendsite' => array(
+				'title' => 'FriendSite'
+				, 'img' => $imgurl.'friendsite.gif" width="16" height="16" alt="FriendSite"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerfriendsite')
+			)						
+		,'obsocialbookmarkerrojo' => array(
+				'title' => 'Rojo'
+				, 'img' => $imgurl.'rojo.gif" width="16" height="16" alt="Rojo"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerrojo')
+			)						
 	
 );
-
-
 
 	$bookmarker = array();
 	unset($bookmarker);
