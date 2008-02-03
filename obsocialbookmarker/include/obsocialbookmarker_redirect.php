@@ -2,8 +2,8 @@
 /*
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
-Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg.
-Version: 5.2.1
+Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot, dzone, friendsite, rojo.
+Version: 5.2.3
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -101,8 +101,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 		,'obsocialbookmarkerdotnetkicks' => 'http://www.dotnetkicks.com/kick/?url='.$link.'&title='.$title
 		,'obsocialbookmarkerblogmemes' => 'http://www.blogmemes.net/post.php?url='.$link.'&title='. $title
 		,'obsocialbookmarkerbluedot' => 'http://bluedot.us/Authoring.aspx?u='.$link.'&t='.$title
-	);
 
+		,'obsocialbookmarkerdzone' => 'http://www.dzone.com/links/add.html?description='.$title.'&url='.$link.'&title='.$title
+		,'obsocialbookmarkerfriendsite' => 'http://friendsite.com/users/bookmark/?u='.$link.'&t='.$title
+		,'obsocialbookmarkerrojo' => 'http://www.rojo.com/add-subscription/?resource='.$link
+	);
 
 
 	$clicked = get_option($site.'_stat');
