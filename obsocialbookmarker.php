@@ -1064,7 +1064,7 @@ function obsocialbookmarkerLinks()
 	$bookmarker = array();
 	unset($bookmarker);
 	
-	$l_fade = '';
+	$l_fade = ' style="float: none;display:inline;" ';
 	
 	if (get_option('obsocialbookmarker_fadeimage') == '1'){
 		$l_fade = 'style="-moz-opacity:0.5;filter:alpha(opacity=50);" onmouseover="this.style.MozOpacity=1; this.filters.alpha.opacity=100" onmouseout="this.style.MozOpacity=0.5; this.filters.alpha.opacity=50"';
