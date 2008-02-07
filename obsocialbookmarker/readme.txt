@@ -1,9 +1,9 @@
 === obsocialbookmarker ===
-Version: 5.2.3
+Version: 5.3.0
 Contributors: Rajender Singh
 Requires at least: 2.2
 Tested up to: 2.3
-Stable tag: obsocialbookmarker version 5.2.3
+Stable tag: obsocialbookmarker version 5.3.0
 Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it, wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, jeqq, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot, dzone, friendsite, rojo.
 
 **obsocialbookmarker** is a social bookmarking plugin which adds user-submission links at the bottom of each post for various social bookmarking sites which allows your visitors to easily submit them in a number of social bookmarking sites.
@@ -34,6 +34,8 @@ I have tried my best to make installation as simple as possible without sacrific
 
 	*	Set exception pages where you don't want bookmarks to show ( Click the "Exception Pages" Button and choose the option ).
 
+	*	Set Ajax Blind Down and Up Effect for Bookmark bar.
+
 4. It also provide a function called "obsocialbookmarker_button()", which can be called in template anywhere you wish to show the bookmark bar.
 	
 	
@@ -57,7 +59,9 @@ Upgradation where old version is less than version 5
 
 	*	Add fading effect to Bookamrk's icons (Click the "General Setting" Button and choose the option).
 
-	*	Set exception pages where you don't want bookmarks to show ( Click the "Exception Pages" Button and choose the option ).		
+	*	Set exception pages where you don't want bookmarks to show ( Click the "Exception Pages" Button and choose the option ).	
+	
+	*	Set Ajax Blind Down and Up Effect for Bookmark bar.
 
 6.	It also provide a function called "obsocialbookmarker_button()", which can be called in template anywhere you wish to show the bookmark bar.
 
@@ -74,7 +78,9 @@ Upgradation where old version is greater or equal than version 5
 
 	*	Add fading effect to Bookamrk's icons (Click the "General Setting" Button and choose the option).
 
-	*	Set exception pages where you don't want bookmarks to show ( Click the "Exception Pages" Button and choose the option ).		
+	*	Set exception pages where you don't want bookmarks to show ( Click the "Exception Pages" Button and choose the option ).
+	
+	*	Set Ajax Blind Down and Up Effect for Bookmark bar.
 
 3.	It also provide a function called "obsocialbookmarker_button()", which can be called in template anywhere you wish to show the bookmark bar.
 
