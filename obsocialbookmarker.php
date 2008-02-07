@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot, dzone, friendsite, rojo.
-Version: 5.2.3
+Version: 5.3.0
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 function obsocialbookmarker_get_version() {
-	return '5.2.3';	
+	return '5.3.0';	
 }
 
 
@@ -363,6 +363,26 @@ function print_obsocialbookmarker_options_form() {
 			$ok = true;
 		}
 
+		if ($_REQUEST['obsocialbookmarker_blindseffect']=="1"){
+			update_option('obsocialbookmarker_blindseffect',"1");
+			$ok = true;
+		}else{
+			update_option('obsocialbookmarker_blindseffect',"0");
+			$ok = true;
+		}
+
+		if ($_REQUEST['obsocialbookmarker_blindseffect_intialdown']=="1"){
+			update_option('obsocialbookmarker_blindseffect_intialdown',"1");
+			$ok = true;
+		}else{
+			update_option('obsocialbookmarker_blindseffect_intialdown',"0");
+			$ok = true;
+		}
+
+
+		update_option('obsocialbookmarker_blindseffect_uplabel',$_REQUEST['obsocialbookmarker_blindseffect_uplabel']);
+		update_option('obsocialbookmarker_blindseffect_downlabel',$_REQUEST['obsocialbookmarker_blindseffect_downlabel']);
+
 		if ($ok){
 			?><div id="message" class="updated fade">
 				<p>Options Saved</p>
@@ -505,6 +525,51 @@ function print_obsocialbookmarker_global_pos_options_form() {
 			</label> 
 		</li>
 
+		<BR>
+		<li> 
+			<label for="obsocialbookmarker_blindseffect"> 
+			Enable Blind Ajax Effect
+			<input name="obsocialbookmarker_blindseffect" type="checkbox" id="obsocialbookmarker_blindseffect" value="1" <?php checked('1', get_option('obsocialbookmarker_blindseffect')); ?>/> 
+			</label> 
+		</li>
+		<li> 
+			<label for="obsocialbookmarker_blindseffect_intialdown"> 
+			Start with Down Effect
+			<input name="obsocialbookmarker_blindseffect_intialdown" type="checkbox" id="obsocialbookmarker_blindseffect_intialdown" value="1" <?php checked('1', get_option('obsocialbookmarker_blindseffect_intialdown')); ?>/> 
+			</label> 
+		</li>
+
+
+		
+		<?php
+		$obsocialbookmarker_blindseffect_uplabel = get_option('obsocialbookmarker_blindseffect_uplabel');
+		$obsocialbookmarker_blindseffect_downlabel = get_option('obsocialbookmarker_blindseffect_downlabel');
+
+		if (empty($obsocialbookmarker_blindseffect_uplabel)){
+			$obsocialbookmarker_blindseffect_uplabel = 'Hide Bookmarks';
+		}
+
+		if (empty($obsocialbookmarker_blindseffect_downlabel)){
+			$obsocialbookmarker_blindseffect_downlabel = 'Show Bookmarks';
+		}
+		?>
+		
+		<li> 
+			<label for="obsocialbookmarker_blindseffect_downlabel"> 
+			Blind Down Label
+			<input name="obsocialbookmarker_blindseffect_downlabel" type="text" id="obsocialbookmarker_blindseffect_downlabel" value="<?php echo $obsocialbookmarker_blindseffect_downlabel ?>"> 
+			
+			</label> 
+		</li>
+
+
+		<li> 
+			<label for="obsocialbookmarker_blindseffect_uplabel"> 
+			Blind Up Label
+			<input name="obsocialbookmarker_blindseffect_uplabel" type="text" id="obsocialbookmarker_blindseffect_uplabel" value="<?php echo $obsocialbookmarker_blindseffect_uplabel ?>"> 
+			
+			</label> 
+		</li>	
 	</ul> 
 	<p class="submit"><input type="submit" name="position" value="Submit" /></p>
 	</form>
@@ -660,9 +725,8 @@ function print_obsocialbookmarker_exception_pages_options_form() {
 
 
 
-function obsocialbookmarkerLinks()
+function obsocialbookmarkerLinks($pos)
 {
-	
 	$link = urlencode(get_permalink());
 	$title = urlencode(the_title('', '', false));
 	$imgurl = '"'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/images/';
@@ -1064,7 +1128,7 @@ function obsocialbookmarkerLinks()
 	$bookmarker = array();
 	unset($bookmarker);
 	
-	$l_fade = ' style="float: none;display:inline;" ';
+	$l_fade = '';
 	
 	if (get_option('obsocialbookmarker_fadeimage') == '1'){
 		$l_fade = 'style="-moz-opacity:0.5;filter:alpha(opacity=50);" onmouseover="this.style.MozOpacity=1; this.filters.alpha.opacity=100" onmouseout="this.style.MozOpacity=0.5; this.filters.alpha.opacity=50"';
@@ -1083,9 +1147,42 @@ function obsocialbookmarkerLinks()
 	if (empty($bookmarker)){
 		return '';
 	}else{
-		return '<p><span>'
+		$obsocialbookmarker_blindseffect = get_option('obsocialbookmarker_blindseffect');
+		$obsocialbookmarker_blindseffect_uplabel = get_option('obsocialbookmarker_blindseffect_uplabel');
+		$obsocialbookmarker_blindseffect_downlabel = get_option('obsocialbookmarker_blindseffect_downlabel');
+		$obsocialbookmarker_blindseffect_intialdown = get_option('obsocialbookmarker_blindseffect_intialdown');
+
+		if (empty($obsocialbookmarker_blindseffect)){
+			$obsocialbookmarker_blindseffect = '0';
+		}
+
+		if (empty($obsocialbookmarker_blindseffect_intialdown)){
+			$obsocialbookmarker_blindseffect_intialdown = '0';
+		}
+		
+		if (empty($obsocialbookmarker_blindseffect_uplabel)){
+			$obsocialbookmarker_blindseffect_uplabel = 'Hide Bookmarks';
+		}
+		if (empty($obsocialbookmarker_blindseffect_downlabel)){
+			$obsocialbookmarker_blindseffect_downlabel = 'Show Bookmarks';
+		}
+			
+		$temp = '';
+
+		if ($obsocialbookmarker_blindseffect == '1'){
+			if ($obsocialbookmarker_blindseffect_intialdown == '1'){
+				$temp = '<script type="text/javascript">Effect.BlindUp(\'obsocialbookmark_bar'.$pos.'\');</script>';
+			}
+
+			return '<div id="obsocialbookmark_baropen'.$pos.'" ><a href="#" onclick="Effect.BlindDown(\'obsocialbookmark_bar'.$pos.'\'); Effect.BlindUp(\'obsocialbookmark_baropen'.$pos.'\'); return false;">'.$obsocialbookmarker_blindseffect_downlabel.'</a></div><br><div id="obsocialbookmark_bar'.$pos.'" ><p><span>'
+				. implode("\n", $bookmarker)
+				. '</span></p> <a href="#" onclick="Effect.BlindUp(\'obsocialbookmark_bar'.$pos.'\'); Effect.BlindDown(\'obsocialbookmark_baropen'.$pos.'\'); return false;">'.$obsocialbookmarker_blindseffect_uplabel.'</a></div> '.$temp;
+		}
+
+		return '<div id="obsocialbookmark_bar'.$pos.'" ><p><span>'
 			. implode("\n", $bookmarker)
-			. "</span></p>";
+			. '</span></p></div> ';
+
 	}
 }
 
@@ -1114,7 +1211,9 @@ function unset_obsocialbookmarker_options(){
 	}
 
 	delete_option('obsocialbookmarker_excpglstopt');
-
+	delete_option('obsocialbookmarker_blindseffect');
+	delete_option('obsocialbookmarker_blindseffect_uplabel');
+	delete_option('obsocialbookmarker_blindseffect_downlabel');
 }
 
 
@@ -1124,10 +1223,10 @@ function obsocialbookmarker_c($content)
 	$final_content = $content;
 
 	if (get_option('obsocialbookmarker_content_a')=='1')
-		$final_content =  $final_content."\n".obsocialbookmarkerLinks();
+		$final_content =  $final_content."\n".obsocialbookmarkerLinks('A');
 
 	if (get_option('obsocialbookmarker_content_b')=='1')
-		$final_content =  obsocialbookmarkerLinks()."\n".$final_content;
+		$final_content =  obsocialbookmarkerLinks('B')."\n".$final_content;
 
 	if(!is_feed()){
 		if (is_page()){
@@ -1147,10 +1246,10 @@ function obsocialbookmarker_e($excerpt)
 	$final_excerpt = $excerpt;
 
 	if (get_option('obsocialbookmarker_excerpt_a')=='1')
-		$final_excerpt =  $final_excerpt."\n".obsocialbookmarkerLinks();
+		$final_excerpt =  $final_excerpt."\n".obsocialbookmarkerLinks('A');
 
 	if (get_option('obsocialbookmarker_excerpt_b')=='1')
-		$final_excerpt =  obsocialbookmarkerLinks()."\n".$final_excerpt;
+		$final_excerpt =  obsocialbookmarkerLinks('B')."\n".$final_excerpt;
 
 	if(!is_feed()){
 		return $final_excerpt."\n";
@@ -1159,9 +1258,19 @@ function obsocialbookmarker_e($excerpt)
 	}
 }
 
+
+function obsocialbookmarker_header()
+{
+	$imgurl = '"'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/images/';
+	$plugin_url = '';
+	echo '<script src= "'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/include/ajax/prototype.js" type="text/javascript"></script>';
+	echo '<script src= "'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/include/ajax/scriptaculous.js" type="text/javascript"></script>';
+}
+
+
 function obsocialbookmarker_button()
 {
-	echo obsocialbookmarkerLinks();
+	echo obsocialbookmarkerLinks('C');
 }
 
 
@@ -1170,6 +1279,7 @@ if (function_exists('add_action')) {
 	add_action('admin_menu', 'obsocialbookmarker_add_pages');
 	add_action('the_content', 'obsocialbookmarker_c');
 	add_action('the_excerpt', 'obsocialbookmarker_e');
+	add_action('wp_head', 'obsocialbookmarker_header');
 }
 
 if (function_exists('register_activation_hook')) {
