@@ -1169,6 +1169,10 @@ function obsocialbookmarkerLinks($pos)
 			
 		$temp = '';
 
+		if ($pos == 'C' || $pos == 'D'){
+			$obsocialbookmarker_blindseffect = '0';
+		}
+
 		if ($obsocialbookmarker_blindseffect == '1'){
 			if ($obsocialbookmarker_blindseffect_intialdown == '1'){
 				$temp = '<script type="text/javascript">Effect.BlindUp(\'obsocialbookmark_bar'.$pos.'\');</script>';
@@ -1246,10 +1250,10 @@ function obsocialbookmarker_e($excerpt)
 	$final_excerpt = $excerpt;
 
 	if (get_option('obsocialbookmarker_excerpt_a')=='1')
-		$final_excerpt =  $final_excerpt."\n".obsocialbookmarkerLinks('A');
+		$final_excerpt =  $final_excerpt."\n".obsocialbookmarkerLinks('C');
 
 	if (get_option('obsocialbookmarker_excerpt_b')=='1')
-		$final_excerpt =  obsocialbookmarkerLinks('B')."\n".$final_excerpt;
+		$final_excerpt =  obsocialbookmarkerLinks('D')."\n".$final_excerpt;
 
 	if(!is_feed()){
 		return $final_excerpt."\n";
@@ -1270,7 +1274,7 @@ function obsocialbookmarker_header()
 
 function obsocialbookmarker_button()
 {
-	echo obsocialbookmarkerLinks('C');
+	echo obsocialbookmarkerLinks('E');
 }
 
 
