@@ -1,11 +1,9 @@
 <?php 
 /*
 Plugin Name: obsocialbookmarker
-Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
-Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot, dzone, friendsite, rojo.
-Version: 5.2.3
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
+
 
 Copyright 2007  Rajender Singh  (email : rajs@oraclebrains.com)
 This program is free software; you can redistribute it and/or modify
@@ -101,10 +99,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 		,'obsocialbookmarkerdotnetkicks' => 'http://www.dotnetkicks.com/kick/?url='.$link.'&title='.$title
 		,'obsocialbookmarkerblogmemes' => 'http://www.blogmemes.net/post.php?url='.$link.'&title='. $title
 		,'obsocialbookmarkerbluedot' => 'http://bluedot.us/Authoring.aspx?u='.$link.'&t='.$title
-
 		,'obsocialbookmarkerdzone' => 'http://www.dzone.com/links/add.html?description='.$title.'&url='.$link.'&title='.$title
 		,'obsocialbookmarkerfriendsite' => 'http://friendsite.com/users/bookmark/?u='.$link.'&t='.$title
 		,'obsocialbookmarkerrojo' => 'http://www.rojo.com/add-subscription/?resource='.$link
+		,'obsocialbookmarkerrec6' => 'http://www.syxt.com.br/rec6/link.php?url='.$link
+		,'obsocialbookmarkerbumpzee' => 'http://www.bumpzee.com/bump.php?u='.$link
+		,'obsocialbookmarkerindianpad' => 'http://www.indianpad.com/submit.php?url='.$link
+		,'obsocialbookmarkerlinkkbr' => 'http://www.linkk.com.br/submit.php?url='.$link.'&titulo='.$title
+		,'obsocialbookmarkerdomelhor' => 'http://domelhor.net/login.php?return=/submit.php?url='.$link.'&titulo='.$title
+		,'obsocialbookmarkereucurtibr' => 'http://www.eucurti.com.br/submit.php?url='.$link.'&titulo='.$title
+		,'obsocialbookmarkerkudosno' => 'http://www.kudos.no/giKudos.php?tittel='.$title.'&url=='.$link
 	);
 
 
