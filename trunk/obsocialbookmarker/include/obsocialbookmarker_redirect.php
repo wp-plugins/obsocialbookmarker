@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 		,'obsocialbookmarkerfacebook' => 'http://www.facebook.com/share.php?u='.$link.''
 		,'obsocialbookmarkertechnorati' => 'http://technorati.com/faves?add='.$link.''
 		,'obsocialbookmarkergoogle' => 'http://www.google.com/bookmarks/mark?op=edit&output=popup&bkmk='.$link.'&title='.$title.''
-		,'obsocialbookmarkerstumbleupon' => 'http://www.stumbleupon.com/submit?url='.$link.'&title='.$title.''
+		,'obsocialbookmarkerstumble' => 'http://www.stumbleupon.com/submit?url='.$link.'&title='.$title.''
 		,'obsocialbookmarkerwindowslive' => 'https://favorites.live.com/quickadd.aspx?marklet=1&mkt=en-us&url='.$link.'&title='.$title.'&top=1'
 		,'obsocialbookmarkertailrank' => 'http://tailrank.com/share/?link_href='.$link.'&title='.$title
 		,'obsocialbookmarkerfurl' => 'http://furl.net/storeIt.jsp?u='.$link.'&t='.$title
