@@ -174,6 +174,13 @@ function obsocialbookmarker_bookmark_list($country) {
 		);					
 
 
+		$bookmark_list['obsocialbookmarkerkaboodle'] = array(
+				'title' => 'Kaboodle'
+				, 'img' => $imgurl.'kaboodle.png" width="16" height="16" alt="Kaboodle"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerkaboodle')
+		);					
+
 		$bookmark_list['obsocialbookmarkerlinkagogo'] = array(
 				'title' => 'LinkaGoGo'
 				, 'img' => $imgurl.'linkagogo.png" width="16" height="16" alt="LinkaGoGo"'
@@ -216,13 +223,26 @@ function obsocialbookmarker_bookmark_list($country) {
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkernetscape')
 		);
-
+	
+		$bookmark_list['obsocialbookmarkerplugim'] = array(
+			'title' => 'PlugIM'
+			, 'img' => $imgurl.'plugim.png"  width="16" height="16" alt="PlugIM"'
+			, 'js' =>  ''
+			, 'visible' => get_option('obsocialbookmarkerplugim')
+		);
 		
-		$bookmark_list['obsocialbookmarkerrawsugar'] = array(
-				'title' => 'Rawsugar'
-				, 'img' => $imgurl.'rawsugar.png" width="16" height="16" alt="Rawsugar"'
+		$bookmark_list['obsocialbookmarkerplugim'] = array(
+			'title' => 'PlugIM'
+			, 'img' => $imgurl.'plugim.png"  width="16" height="16" alt="PlugIM"'
+			, 'js' =>  ''
+			, 'visible' => get_option('obsocialbookmarkerplugim')
+		);
+
+		$bookmark_list['obsocialbookmarkerpopcurrent'] = array(
+				'title' => 'PopCurrent'
+				, 'img' => $imgurl.'popcurrent.png" width="16" height="16" alt="PopCurrent"'
 				, 'js' =>  ''
-				, 'visible' => get_option('obsocialbookmarkerrawsugar')
+				, 'visible' => get_option('obsocialbookmarkerpopcurrent')
 		);
 
 		$bookmark_list['obsocialbookmarkerreddit'] = array(
@@ -289,6 +309,19 @@ function obsocialbookmarker_bookmark_list($country) {
 				, 'visible' => get_option('obsocialbookmarkersmarking')
 		);
 
+		$bookmark_list['obsocialbookmarkersk-rt'] = array(
+				'title' => 'Sk*rt'
+				, 'img' => $imgurl.'sk-rt.png" width="16" height="16" alt="Sk*rt"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkersk-rt')
+		);
+		
+		$bookmark_list['obsocialbookmarkershoutwire'] = array(
+				'title' => 'Shoutwire'
+				, 'img' => $imgurl.'shoutwire.png" width="16" height="16" alt="Shoutwire"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkershoutwire')
+		);
 
 		$bookmark_list['obsocialbookmarkertechnorati'] = array(
 			'title' => 'Technorati'
