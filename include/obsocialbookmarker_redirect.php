@@ -109,8 +109,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 		,'obsocialbookmarkerdomelhor' => 'http://domelhor.net/login.php?return=/submit.php?url='.$link.'&titulo='.$title
 		,'obsocialbookmarkereucurtibr' => 'http://www.eucurti.com.br/submit.php?url='.$link.'&titulo='.$title
 		,'obsocialbookmarkerkudosno' => 'http://www.kudos.no/giKudos.php?tittel='.$title.'&url=='.$link
+		,'obsocialbookmarkerkaboodle' => 'http://www.kaboodle.com/za/selectpage?p_pop=false&pa=url&u='.$link
+		,'obsocialbookmarkerplugim' => 'http://www.plugim.com/submit?url='.$link.'&amp;title='.$title
+		,'obsocialbookmarkerpopcurrent' => 'http://popcurrent.com/submit?url='.$link.'&amp;title='.$title
+		,'obsocialbookmarkersk-rt' => 'http://www.sk-rt.com/submit.php?url='.$link
+		,'obsocialbookmarkershoutwire' => 'http://www.shoutwire.com/?p=submit&amp;link='.$link
 	);
-
 
 	$clicked = get_option($site.'_stat');
 	if (empty($clicked)){
