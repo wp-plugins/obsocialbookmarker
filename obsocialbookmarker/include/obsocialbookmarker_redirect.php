@@ -114,7 +114,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 		,'obsocialbookmarkerpopcurrent' => 'http://popcurrent.com/submit?url='.$link.'&amp;title='.$title
 		,'obsocialbookmarkersk-rt' => 'http://www.sk-rt.com/submit.php?url='.$link
 		,'obsocialbookmarkershoutwire' => 'http://www.shoutwire.com/?p=submit&amp;link='.$link
-	);
+		,'obsocialbookmarkergabbr' => 'http://www.gabbr.com/submit.php?url='.$link
+		,'obsocialbookmarkeri89' => 'http://www.i89.us/bookmark.php?url='.$link.'&amp;title='.$title
+		,'obsocialbookmarkerlinkatopia' => 'http://linkatopia.com/add?uri='.$link.';title='.$title
+);
 
 	$clicked = get_option($site.'_stat');
 	if (empty($clicked)){
