@@ -3,8 +3,8 @@
 /*
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
-Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot, dzone, friendsite, rojo, bumpzee, indianpad, rec6, linkk, domelhor, eucurti, kudos, popcurrent, kaboodle, plugim, sk*rt, shoutwire.
-Version: 5.3.2
+Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot, dzone, friendsite, rojo, bumpzee, indianpad, rec6, linkk, domelhor, eucurti, kudos, popcurrent, kaboodle, plugim, sk*rt, shoutwire, Gabbr, i89, Linkatopia.
+Version: 5.3.3
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 include "include/obsocialbookmarker_db.inc";
 
 function obsocialbookmarker_get_version() {
-	return '5.3.2';	
+	return '5.3.3';	
 }
 
 
@@ -712,10 +712,10 @@ function obsocialbookmarker_c($content)
 	$final_content = $content;
 
 	if (get_option('obsocialbookmarker_content_a')=='1')
-		$final_content =  $final_content."\n".obsocialbookmarkerLinks('A');
+		$final_content =  $final_content."\n".obsocialbookmarkerLinks($post->ID);
 
 	if (get_option('obsocialbookmarker_content_b')=='1')
-		$final_content =  obsocialbookmarkerLinks('B')."\n".$final_content;
+		$final_content =  obsocialbookmarkerLinks($post->ID)."\n".$final_content;
 
 	if(!is_feed()){
 		if (is_page()){
@@ -732,13 +732,14 @@ function obsocialbookmarker_c($content)
 
 function obsocialbookmarker_e($excerpt)
 {
+	global $post;
 	$final_excerpt = $excerpt;
 
 	if (get_option('obsocialbookmarker_excerpt_a')=='1')
-		$final_excerpt =  $final_excerpt."\n".obsocialbookmarkerLinks('C');
+		$final_excerpt =  $final_excerpt."\n".obsocialbookmarkerLinks($post->ID);
 
 	if (get_option('obsocialbookmarker_excerpt_b')=='1')
-		$final_excerpt =  obsocialbookmarkerLinks('D')."\n".$final_excerpt;
+		$final_excerpt =  obsocialbookmarkerLinks($post->ID)."\n".$final_excerpt;
 
 	if(!is_feed()){
 		return $final_excerpt."\n";
