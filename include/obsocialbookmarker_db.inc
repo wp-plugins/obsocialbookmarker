@@ -150,12 +150,18 @@ function obsocialbookmarker_bookmark_list($country) {
 				, 'visible' => get_option('obsocialbookmarkerfleck')
 		);			
 
-		
 		$bookmark_list['obsocialbookmarkergoogle'] = array(
 			'title' => 'Google'
 			, 'img' => $imgurl.'goog.png" width="16" height="16" alt="Google"'
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkergoogle')
+		);
+
+		$bookmark_list['obsocialbookmarkergabbr'] = array(
+			'title' => 'Gabbr'
+			, 'img' => $imgurl.'gabbr.gif" width="16" height="16" alt="Gabbr"'
+			, 'js' =>  ''
+			, 'visible' => get_option('obsocialbookmarkergabbr')
 		);
 
 		$bookmark_list['obsocialbookmarkerhugg'] = array(
@@ -186,6 +192,13 @@ function obsocialbookmarker_bookmark_list($country) {
 				, 'img' => $imgurl.'linkagogo.png" width="16" height="16" alt="LinkaGoGo"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerlinkagogo')
+		);
+
+		$bookmark_list['obsocialbookmarkerlinkatopia'] = array(
+				'title' => 'Linkatopia'
+				, 'img' => $imgurl.'linkatopia.gif" width="16" height="16" alt="Linkatopia"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerlinkatopia')
 		);
 
 		$bookmark_list['obsocialbookmarkermisterwong'] = array(
@@ -463,7 +476,14 @@ function obsocialbookmarker_bookmark_list($country) {
 				, 'img' => $imgurl.'bluedot.gif" width="16" height="16" alt="Blue Dot"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerbluedot')
-			);				
+			);	
+			
+			$bookmark_list['obsocialbookmarkeri89'] = array(
+				'title' => 'i89'
+				, 'img' => $imgurl.'i89.gif" width="16" height="16" alt="i89"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkeri89')
+			);	
 	}
 
 	if ($country == 'ch' || $country == 'ALL' ){
