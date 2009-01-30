@@ -1,0 +1,2 @@
+Version:5.2.1
+Msg: Removed enconding of URL as it was creating problem in many bookmark sites. Note - Wordpress subversion is updated now.
