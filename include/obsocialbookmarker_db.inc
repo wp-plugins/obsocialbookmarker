@@ -286,6 +286,13 @@ function obsocialbookmarker_bookmark_list($country) {
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkersphere')
 		);	
+		
+		$bookmark_list['obsocialbookmarkertipd'] = array(
+				'title' => 'Tipd'
+				, 'img' => $imgurl.'tipd.png" width="16" height="16" alt="Tipd"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkertipd')
+		);	
 
 		$bookmark_list['obsocialbookmarkerstumble'] = array(
 			'title' => 'Stumble it'
@@ -460,7 +467,12 @@ function obsocialbookmarker_bookmark_list($country) {
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerindianpad')
 		);	
-
+		$bookmark_list['obsocialbookmarkerweblinkren'] = array(
+				'title' => 'Weblinkr'
+				, 'img' => $imgurl.'weblinkr.png" width="16" height="16" alt="Weblinkr"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerweblinkren')
+		);	
 	}
 	
 	if ($country == 'us' || $country == 'ALL' ){
@@ -493,6 +505,12 @@ function obsocialbookmarker_bookmark_list($country) {
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwongcn')
 		);
+		$bookmark_list['obsocialbookmarkerweblinkrch'] = array(
+				'title' => 'Weblinkr'
+				, 'img' => $imgurl.'weblinkr.png" width="16" height="16" alt="Weblinkr"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerweblinkrch')
+		);	
 
 	}
 
@@ -523,7 +541,29 @@ function obsocialbookmarker_bookmark_list($country) {
 				, 'img' => $imgurl.'yigg.gif" width="16" height="16" alt="Yigg"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkeryigg')
+		);
+		
+		$bookmark_list['obsocialbookmarkerfavoriten'] = array(
+				'title' => 'Favoriten.de'
+				, 'img' => $imgurl.'favoriten.gif" width="16" height="16" alt="Favoriten.de"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerfavoriten')
 		);	
+
+		$bookmark_list['obsocialbookmarkernewskick'] = array(
+				'title' => 'newskick'
+				, 'img' => $imgurl.'newskick.ico" width="16" height="16" alt="newskick"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkernewskick')
+		);
+		
+		$bookmark_list['obsocialbookmarkerweblinkrde'] = array(
+				'title' => 'Weblinkr'
+				, 'img' => $imgurl.'weblinkr.png" width="16" height="16" alt="Weblinkr"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerweblinkrde')
+		);			
+
 	}
 
 	if ($country == 'fr' || $country == 'ALL' ){
@@ -553,7 +593,12 @@ function obsocialbookmarker_bookmark_list($country) {
 			, 'js' =>  ''
 			, 'visible' => get_option('obsocialbookmarkermisterwonges')
 		);
-
+		$bookmark_list['obsocialbookmarkerweblinkres'] = array(
+				'title' => 'Weblinkr'
+				, 'img' => $imgurl.'weblinkr.png" width="16" height="16" alt="Weblinkr"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerweblinkres')
+		);
 	}
 
 	if ($country == 'pl' || $country == 'ALL' ){
