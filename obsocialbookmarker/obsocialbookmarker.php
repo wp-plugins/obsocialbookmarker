@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress/plugin/ob_social_button
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot, dzone, friendsite, rojo, bumpzee, indianpad, rec6, linkk, domelhor, eucurti, kudos, popcurrent, kaboodle, plugim, sk*rt, shoutwire, Gabbr, i89, Linkatopia, tipd, favoriten, newskick, weblinkr.
-Version: 5.3.4
+Version: 5.3.5
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 include "include/obsocialbookmarker_db.inc";
 
 function obsocialbookmarker_get_version() {
-	return '5.3.4';	
+	return '5.3.5';	
 }
 
 
@@ -262,6 +262,10 @@ function print_obsocialbookmarker_options_form() {
 		update_option('obsocialbookmarker_blindseffect_uplabel',$_REQUEST['obsocialbookmarker_blindseffect_uplabel']);
 		update_option('obsocialbookmarker_blindseffect_downlabel',$_REQUEST['obsocialbookmarker_blindseffect_downlabel']);
 
+		update_option('obsocialbookmarker_blindseffect_uplabel_style',$_REQUEST['obsocialbookmarker_blindseffect_uplabel_style']);
+		update_option('obsocialbookmarker_blindseffect_downlabel_style',$_REQUEST['obsocialbookmarker_blindseffect_downlabel_style']);
+
+
 		if ($ok){
 			?><div id="message" class="updated fade">
 				<p>Options Saved</p>
@@ -342,7 +346,6 @@ function print_obsocialbookmarker_options_form() {
 					<input type="submit" name="obform" value="Exception Pages" />
 				</form>
 			</td>
-			<td>
 		</tr>
 		</table>			
 	</p>
@@ -424,12 +427,23 @@ function print_obsocialbookmarker_global_pos_options_form() {
 		$obsocialbookmarker_blindseffect_uplabel = get_option('obsocialbookmarker_blindseffect_uplabel');
 		$obsocialbookmarker_blindseffect_downlabel = get_option('obsocialbookmarker_blindseffect_downlabel');
 
+		$obsocialbookmarker_blindseffect_uplabel_style = get_option('obsocialbookmarker_blindseffect_uplabel_style');
+		$obsocialbookmarker_blindseffect_downlabel_style = get_option('obsocialbookmarker_blindseffect_downlabel_style');
+
 		if (empty($obsocialbookmarker_blindseffect_uplabel)){
 			$obsocialbookmarker_blindseffect_uplabel = 'Hide Bookmarks';
 		}
 
 		if (empty($obsocialbookmarker_blindseffect_downlabel)){
-			$obsocialbookmarker_blindseffect_downlabel = 'Show Bookmarks';
+			$obsocialbookmarker_blindseffect_downlabel = 'Share this post';
+		}
+		
+		if (empty($obsocialbookmarker_blindseffect_uplabel_style)){
+			$obsocialbookmarker_blindseffect_uplabel_style = '';
+		}
+
+		if (empty($obsocialbookmarker_blindseffect_downlabel_style)){
+			$obsocialbookmarker_blindseffect_downlabel_style = 'color:#234B7B;text-decoration:none;';
 		}
 		?>
 		
@@ -441,6 +455,13 @@ function print_obsocialbookmarker_global_pos_options_form() {
 			</label> 
 		</li>
 
+		<li> 
+			<label for="obsocialbookmarker_blindseffect_downlabel_style"> 
+			Blind Down Label Style
+			<input name="obsocialbookmarker_blindseffect_downlabel_style" type="text" id="obsocialbookmarker_blindseffect_downlabel_style" value="<?php echo $obsocialbookmarker_blindseffect_downlabel_style ?>"> 
+			
+			</label> 
+		</li>
 
 		<li> 
 			<label for="obsocialbookmarker_blindseffect_uplabel"> 
@@ -449,6 +470,15 @@ function print_obsocialbookmarker_global_pos_options_form() {
 			
 			</label> 
 		</li>	
+
+		<li> 
+			<label for="obsocialbookmarker_blindseffect_uplabel"> 
+			Blind Up Label Style
+			<input name="obsocialbookmarker_blindseffect_uplabel_style" type="text" id="obsocialbookmarker_blindseffect_uplabel_style" value="<?php echo $obsocialbookmarker_blindseffect_uplabel_style ?>"> 
+			
+			</label> 
+		</li>	
+
 	</ul> 
 	<p class="submit"><input type="submit" name="position" value="Submit" /></p>
 	</form>
@@ -506,6 +536,7 @@ function print_obsocialbookmarker_global_bookmark_options_form($ob_p_country) {
 		if 	(!empty($bookmark_list)){
 		?><table cellpadding="10"><?php
 		$i = 0;
+		$cssurl = '"'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/include/admin.css';
 		foreach ($bookmark_list as $key => $data) {
 				if ($i == 5) {
 					$i = 0;
@@ -637,9 +668,13 @@ function obsocialbookmarkerLinks($pos)
 		return '';
 	}else{
 		$obsocialbookmarker_blindseffect = get_option('obsocialbookmarker_blindseffect');
+		$obsocialbookmarker_blindseffect_intialdown = get_option('obsocialbookmarker_blindseffect_intialdown');
+
 		$obsocialbookmarker_blindseffect_uplabel = get_option('obsocialbookmarker_blindseffect_uplabel');
 		$obsocialbookmarker_blindseffect_downlabel = get_option('obsocialbookmarker_blindseffect_downlabel');
-		$obsocialbookmarker_blindseffect_intialdown = get_option('obsocialbookmarker_blindseffect_intialdown');
+		
+		$obsocialbookmarker_blindseffect_uplabel_style = get_option('obsocialbookmarker_blindseffect_uplabel_style');
+		$obsocialbookmarker_blindseffect_downlabel_style = get_option('obsocialbookmarker_blindseffect_downlabel_style');
 
 		if (empty($obsocialbookmarker_blindseffect)){
 			$obsocialbookmarker_blindseffect = '0';
@@ -653,10 +688,20 @@ function obsocialbookmarkerLinks($pos)
 			$obsocialbookmarker_blindseffect_uplabel = 'Hide Bookmarks';
 		}
 		if (empty($obsocialbookmarker_blindseffect_downlabel)){
-			$obsocialbookmarker_blindseffect_downlabel = 'Show Bookmarks';
+			$obsocialbookmarker_blindseffect_downlabel = 'Share this post';
 		}
 			
-		$temp = '';
+
+		if (empty($obsocialbookmarker_blindseffect_uplabel_style)){
+			$obsocialbookmarker_blindseffect_uplabel_style = '';
+		}
+		if (empty($obsocialbookmarker_blindseffect_downlabel_style)){
+			$obsocialbookmarker_blindseffect_downlabel_style = 'color:#234B7B;text-decoration:none;';
+		}
+			
+
+		$temp1 = 'overflow: visible;';
+		$temp2 = 'overflow: visible;';
 
 		if ($pos == 'C' || $pos == 'D'){
 			$obsocialbookmarker_blindseffect = '0';
@@ -664,12 +709,14 @@ function obsocialbookmarkerLinks($pos)
 
 		if ($obsocialbookmarker_blindseffect == '1'){
 			if ($obsocialbookmarker_blindseffect_intialdown == '1'){
-				$temp = '<script type="text/javascript">Effect.BlindUp(\'obsocialbookmark_bar'.$pos.'\');</script>';
+				$temp1 = $temp1.' display: none;';
+			}else{
+				$temp2 = $temp2.' display: none;';
 			}
 
-			return '<div id="obsocialbookmark_baropen'.$pos.'" ><a href="#" onclick="Effect.BlindDown(\'obsocialbookmark_bar'.$pos.'\'); Effect.BlindUp(\'obsocialbookmark_baropen'.$pos.'\'); return false;">'.$obsocialbookmarker_blindseffect_downlabel.'</a></div><br><div id="obsocialbookmark_bar'.$pos.'" ><p><span>'
+			return '<div id="obsocialbookmark_baropen'.$pos.'" style="'.$temp1.'" ><a style="'.$obsocialbookmarker_blindseffect_downlabel_style.'" href="#" onclick="Effect.BlindDown(\'obsocialbookmark_bar'.$pos.'\'); Effect.BlindUp(\'obsocialbookmark_baropen'.$pos.'\'); return false;">'.$obsocialbookmarker_blindseffect_downlabel.'</a></div><br><div id="obsocialbookmark_bar'.$pos.'" style="'.$temp2.'" ><p><span>'
 				. implode("\n", $bookmarker)
-				. '</span></p> <a href="#" onclick="Effect.BlindUp(\'obsocialbookmark_bar'.$pos.'\'); Effect.BlindDown(\'obsocialbookmark_baropen'.$pos.'\'); return false;">'.$obsocialbookmarker_blindseffect_uplabel.'</a></div> '.$temp;
+				. '</span></p> <a style="'.$obsocialbookmarker_blindseffect_uplabel_style.'" href="#" onclick="Effect.BlindUp(\'obsocialbookmark_bar'.$pos.'\'); Effect.BlindDown(\'obsocialbookmark_baropen'.$pos.'\'); return false;">'.$obsocialbookmarker_blindseffect_uplabel.'</a></div> ';
 		}
 
 		return '<div id="obsocialbookmark_bar'.$pos.'" ><p><span>'
@@ -755,6 +802,7 @@ function obsocialbookmarker_header()
 	$plugin_url = '';
 	echo '<script src= "'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/include/ajax/prototype.js" type="text/javascript"></script>';
 	echo '<script src= "'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/include/ajax/scriptaculous.js" type="text/javascript"></script>';
+	echo '<link rel="stylesheet" type="text/css" href="'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/include/admin.css" />';
 }
 
 

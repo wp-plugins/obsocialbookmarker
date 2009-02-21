@@ -1,9 +1,9 @@
 === obsocialbookmarker ===
-Version: 5.3.4
+Version: 5.3.5
 Contributors: Rajender Singh
 Requires at least: 2.2
-Tested up to: 2.7
-Stable tag: obsocialbookmarker version 5.3.4
+Tested up to: 2.7.1
+Stable tag: obsocialbookmarker version 5.3.5
 Tags: obsocialbookmarker, bookmark, social, network, del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it, wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, jeqq, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot, dzone, friendsite, rojo, bumpzee, indianpad, rec6, linkk, domelhor, eucurti, kudos, popcurrent, kaboodle, plugim, sk*rt, shoutwire, Gabbr, i89, Linkatopia, tipd, favoriten, newskick, weblinkr.
 
 **obsocialbookmarker** is a social bookmarking plugin which adds user-submission links at the bottom of each post for various social bookmarking sites which allows your visitors to easily submit them in a number of social bookmarking sites.
