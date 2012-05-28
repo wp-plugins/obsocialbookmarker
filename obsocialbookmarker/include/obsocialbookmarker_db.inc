@@ -473,6 +473,32 @@ function obsocialbookmarker_bookmark_list($country) {
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerweblinkren')
 		);	
+		$bookmark_list['obsocialbookmarkertwitthis'] = array(
+				'title' => 'Twitter'
+				, 'img' => $imgurl.'twitter.png" width="16" height="16" alt="Twitter"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkertwitthis')
+		);
+		$bookmark_list['obsocialbookmarkerlinkedin'] = array(
+				'title' => 'Linked in'
+				, 'img' => $imgurl.'linkedin.png" width="16" height="16" alt="Linked in"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerlinkedin')
+		);		
+		$bookmark_list['obsocialbookmarkerbibsonomy'] = array(
+				'title' => 'Bibsonomy'
+				, 'img' => $imgurl.'bibsonomy.png" width="16" height="16" alt="Bibsonomy"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerbibsonomy')
+		);	
+		$bookmark_list['obsocialbookmarkerciteulike'] = array(
+				'title' => 'CiteULike'
+				, 'img' => $imgurl.'citeulike.png" width="16" height="16" alt="CiteULike"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerciteulike')
+		);			
+		
+		
 	}
 	
 	if ($country == 'us' || $country == 'ALL' ){
@@ -562,6 +588,12 @@ function obsocialbookmarker_bookmark_list($country) {
 				, 'img' => $imgurl.'weblinkr.png" width="16" height="16" alt="Weblinkr"'
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerweblinkrde')
+		);		
+		$bookmark_list['obsocialbookmarkerbonitrust'] = array(
+				'title' => 'BoniTrust'
+				, 'img' => $imgurl.'bonitrust.gif" width="16" height="16" alt="BoniTrust"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerbonitrust')
 		);			
 
 	}
