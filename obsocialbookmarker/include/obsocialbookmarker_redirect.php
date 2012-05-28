@@ -5,7 +5,7 @@ Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
 
-Copyright 2007  Rajender Singh  (email : rajs@oraclebrains.com)
+Copyright 2012  Rajender Singh  (email : rajs@oraclebrains.com)
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
@@ -129,6 +129,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 		,'obsocialbookmarkerbibsonomy' => 'http://www.bibsonomy.org/editBookmark?url='.$link.'&amp;description='.$title
 		,'obsocialbookmarkerbonitrust' => 'http://www.bonitrust.de/account/bookmark/?bookmark_url='.$link
 		,'obsocialbookmarkerciteulike' => 'http://www.citeulike.org/posturl?url='.$link.'&amp;title='.$title
+		,'obsocialbookmarkernewsider' => 'http://www.newsider.de/submit.php?url='.$link
+		,'obsocialbookmarkerkledyde' => 'http://www.kledy.de/submit.php?url='.$link
+		,'obsocialbookmarkerseoigg' => 'http://www.seoigg.de/node/add/storylink?edit[url]='.$link.'&amp;edit[title]='.$title
+		,'obsocialbookmarkerreadsterde' => 'http://www.readster.de/submit/?url='.$link.'&amp;title='.$title
+		,'obsocialbookmarkerfavoritende' => 'http://www.favoriten.de/url-hinzufuegen.html?bm_url='.$link.'&amp;bm_title='.$title
 		
 );
 

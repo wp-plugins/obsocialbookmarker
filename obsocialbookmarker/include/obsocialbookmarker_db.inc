@@ -5,7 +5,7 @@ Plugin Name: obsocialbookmarker
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
-Copyright 2007  Rajender Singh  (email : rajs@oraclebrains.com)
+Copyright 2012  Rajender Singh  (email : rajs@oraclebrains.com)
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
@@ -595,7 +595,36 @@ function obsocialbookmarker_bookmark_list($country) {
 				, 'js' =>  ''
 				, 'visible' => get_option('obsocialbookmarkerbonitrust')
 		);			
-
+		$bookmark_list['obsocialbookmarkernewsider'] = array(
+				'title' => 'Newsider'
+				, 'img' => $imgurl.'newsider.png" width="16" height="16" alt="Newsider"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkernewsider')
+		);
+		$bookmark_list['obsocialbookmarkerkledyde'] = array(
+				'title' => 'Kledy.de'
+				, 'img' => $imgurl.'kledy.png" width="16" height="16" alt="Kledy.de"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerkledyde')
+		);		
+		$bookmark_list['obsocialbookmarkerseoigg'] = array(
+				'title' => 'Seoigg'
+				, 'img' => $imgurl.'seoigg.png" width="16" height="16" alt="Seoigg"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerseoigg')
+		);		
+		$bookmark_list['obsocialbookmarkerreadsterde'] = array(
+				'title' => 'Readster'
+				, 'img' => $imgurl.'readsterde.gif" width="16" height="16" alt="Readster"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerreadsterde')
+		);	
+		$bookmark_list['obsocialbookmarkerfavoritende'] = array(
+				'title' => 'Favoriten'
+				, 'img' => $imgurl.'favoritende.gif" width="16" height="16" alt="Favoriten"'
+				, 'js' =>  ''
+				, 'visible' => get_option('obsocialbookmarkerfavoritende')
+		);			
 	}
 
 	if ($country == 'fr' || $country == 'ALL' ){
