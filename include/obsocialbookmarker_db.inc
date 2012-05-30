@@ -2,6 +2,7 @@
 
 /*
 Plugin Name: obsocialbookmarker
+Version: 5.4.0
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 

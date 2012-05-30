@@ -4,7 +4,7 @@
 Plugin Name: obsocialbookmarker
 Plugin URI: http://www.oraclebrains.com/wordpress-plugins/
 Description: Add social book mark icons and links at the bottom of each post: bookmarks options includes del.icio.us, reddit, slashdot it, digg, facebook, technorati, google, stumble, windows live, tailrank, bloglines, furl, netscape, yahoo, blinklist, feed me links, co.mments, bloglines, bookmark.it, ask, diggita, mister wong, backflip, spurl, netvouz, diigo, dropjack, segnalo, stumbleupon, simpy, newsvine, slashdot it,wink, linkagogo, rawsugar, fark, squidoo, blogmarks, blinkbits, connotea, smarking, wists, wykop, webride, thisnext, wirefan, taggly, sphere, fleck, tagglede, linkarena, yigg, mixx, hugg, dotnetkicks, blogmemes, bluedot, dzone, friendsite, rojo, bumpzee, indianpad, rec6, linkk, domelhor, eucurti, kudos, popcurrent, kaboodle, plugim, sk*rt, shoutwire, Gabbr, i89, Linkatopia, tipd, favoriten, newskick, weblinkr, Twitter,Linked in, Bibsonomy, CiteULike, BoniTrust, Favoriten, Readster, Seoigg, Kledy.de, Newsider.
-Version: 5.3.7
+Version: 5.4.0
 Author: Rajender Singh
 Author URI: http://www.oraclebrains.com/
 
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 include "include/obsocialbookmarker_db.inc";
 
 function obsocialbookmarker_get_version() {
-	return '5.3.7';	
+	return '5.4.0';	
 }
 
 
@@ -536,7 +536,6 @@ function print_obsocialbookmarker_global_bookmark_options_form($ob_p_country) {
 		if 	(!empty($bookmark_list)){
 		?><table cellpadding="10"><?php
 		$i = 0;
-		$cssurl = '"'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/include/admin.css';
 		foreach ($bookmark_list as $key => $data) {
 				if ($i == 5) {
 					$i = 0;
@@ -714,9 +713,9 @@ function obsocialbookmarkerLinks($pos)
 				$temp2 = $temp2.' display: none;';
 			}
 
-			return '<div id="obsocialbookmark_baropen'.$pos.'" style="'.$temp1.'" ><a style="'.$obsocialbookmarker_blindseffect_downlabel_style.'" href="#" onclick="Effect.BlindDown(\'obsocialbookmark_bar'.$pos.'\'); Effect.BlindUp(\'obsocialbookmark_baropen'.$pos.'\'); return false;">'.$obsocialbookmarker_blindseffect_downlabel.'</a></div><br><div id="obsocialbookmark_bar'.$pos.'" style="'.$temp2.'" ><p><span>'
+			return '<div id="obsocialbookmark_baropen'.$pos.'" style="'.$temp1.'" ><a id="obsocialbookmark_baropenlink'.$pos.'" style="'.$obsocialbookmarker_blindseffect_downlabel_style.'" href="#" onclick="slideDown(\'obsocialbookmark_bar'.$pos.'\'); slideUp(\'obsocialbookmark_baropen'.$pos.'\'); return false;">'.$obsocialbookmarker_blindseffect_downlabel.'</a></div><br><div id="obsocialbookmark_bar'.$pos.'" style="'.$temp2.'" ><p><span>'
 				. implode("\n", $bookmarker)
-				. '</span></p> <a style="'.$obsocialbookmarker_blindseffect_uplabel_style.'" href="#" onclick="Effect.BlindUp(\'obsocialbookmark_bar'.$pos.'\'); Effect.BlindDown(\'obsocialbookmark_baropen'.$pos.'\'); return false;">'.$obsocialbookmarker_blindseffect_uplabel.'</a></div> ';
+				. '</span></p> <a id="obsocialbookmark_barcloselink'.$pos.'" style="'.$obsocialbookmarker_blindseffect_uplabel_style.'" href="#" onclick="slideUp(\'obsocialbookmark_bar'.$pos.'\'); slideDown(\'obsocialbookmark_baropen'.$pos.'\'); return false;">'.$obsocialbookmarker_blindseffect_uplabel.'</a></div> ';
 		}
 
 		return '<div id="obsocialbookmark_bar'.$pos.'" ><p><span>'
@@ -800,9 +799,8 @@ function obsocialbookmarker_header()
 {
 	$imgurl = '"'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/images/';
 	$plugin_url = '';
-	echo '<script src= "'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/include/ajax/prototype.js" type="text/javascript"></script>';
-	echo '<script src= "'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/include/ajax/scriptaculous.js" type="text/javascript"></script>';
-	echo '<link rel="stylesheet" type="text/css" href="'.get_option('siteurl').'/wp-content/plugins/obsocialbookmarker/include/admin.css" />';
+	wp_enqueue_script('jquery');
+	echo '<script type="text/javascript"> function slideUp(divid1) { jQuery(\'#\'+divid1).slideUp("slow"); return false; }  function slideDown(divid1) { jQuery(\'#\'+divid1).slideDown("slow"); return false; } </script>';
 }
 
 

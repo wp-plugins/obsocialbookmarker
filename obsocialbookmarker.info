@@ -1,2 +1,2 @@
-Version:5.3.6
-Msg: Added few more book marks (Twitter,Linked in, Bibsonomy, CiteULike, BoniTrust)
+Version:5.4.0
+Msg: Taken out external JS dependency thus making it more lighter
